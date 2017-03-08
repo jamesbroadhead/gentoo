@@ -124,8 +124,14 @@ restore_config() {
 		pushd "${found}" > /dev/null
 		treecopy . "${dest}" || die "Failed to restore ${found} to $1"
 		popd > /dev/null
+	elif [ ! -d "${base}" ] ; then
+		# base dir does not exist - create it & try again
+		mkdir -p "${base}"
+		chown portage:portage "${base}"
+		chmod 777 "${base}"
+		restore_config "$@"
 	else
-		# maybe the user is screwing around with perms they shouldnt #289168
+		# maybe the user has set unworkable permissions #289168
 		if [[ ! -r ${base} ]] ; then
 			eerror "Unable to read ${base} -- please check its permissions."
 			die "Reading config files failed"
