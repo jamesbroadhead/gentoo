@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 WX_GTK_VER=3.0
@@ -12,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="wxWinLL-3"
 SLOT="0/3" # based on SONAME of libwxsvg.so
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="static-libs libav"
 
 RDEPEND=">=dev-libs/expat-2:=

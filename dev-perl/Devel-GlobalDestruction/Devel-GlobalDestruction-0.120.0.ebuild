@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION='Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls'
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=dev-perl/Sub-Exporter-Progressive-0.1.11"

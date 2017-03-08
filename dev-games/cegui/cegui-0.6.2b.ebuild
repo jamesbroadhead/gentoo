@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit autotools eutils
@@ -29,7 +28,7 @@ RDEPEND="dev-libs/libpcre
 	opengl? (
 		virtual/opengl
 		media-libs/freeglut
-		media-libs/glew
+		media-libs/glew:=
 	)
 	xerces-c? ( dev-libs/xerces-c )
 	xml? ( dev-libs/libxml2 )"

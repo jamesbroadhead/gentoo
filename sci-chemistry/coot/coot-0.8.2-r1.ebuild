@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -54,6 +53,7 @@ XDEPS="
 	virtual/opengl"
 
 SCHEMEDEPS="
+	<dev-scheme/guile-2
 	dev-scheme/net-http
 	dev-scheme/guile-gui
 	>=dev-scheme/guile-lib-0.1.6

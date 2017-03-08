@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -40,7 +39,7 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}/${PN}-26.6-r1-init.d" gimps
+	newinitd "${FILESDIR}/${PN}-28.9-init.d" gimps
 	newconfd "${FILESDIR}/${PN}-25.6-conf.d" gimps
 
 	systemd_dounit "${FILESDIR}/${PN}.service"

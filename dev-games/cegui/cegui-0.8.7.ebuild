@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -24,6 +23,7 @@ REQUIRED_USE="|| ( expat tinyxml xerces-c xml )
 # directfb broken
 #	directfb? ( dev-libs/DirectFB )
 RDEPEND="
+	dev-libs/boost:=
 	virtual/libiconv
 	bidi? ( dev-libs/fribidi )
 	devil? ( media-libs/devil )
@@ -38,7 +38,7 @@ RDEPEND="
 	opengl? (
 		virtual/opengl
 		virtual/glu
-		media-libs/glew
+		media-libs/glew:=
 	)
 	pcre? ( dev-libs/libpcre )
 	python? (

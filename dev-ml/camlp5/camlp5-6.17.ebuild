@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -14,7 +13,7 @@ S="${WORKDIR}/${PN}-rel$(replace_all_version_separators '')"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ppc x86 ~x86-fbsd"
 IUSE="doc +ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-3.10:=[ocamlopt?]"

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
@@ -31,6 +30,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-reboot-def.patch #548312
 	epatch "${FILESDIR}"/${P}-no-clean.patch #557890
 	epatch "${FILESDIR}"/${P}-no-C-headers.patch #592638
+	epatch "${FILESDIR}"/${P}-test-random-cflags.patch #590974
 
 	if use serial ; then
 		sed -i \
@@ -38,7 +38,10 @@ src_prepare() {
 			config.h \
 			|| die "sed failed"
 	fi
+}
 
+src_configure() {
+	tc-ld-disable-gold #580212
 	tc-export AS CC LD
 }
 

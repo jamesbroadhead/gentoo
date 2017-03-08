@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4} )
@@ -45,7 +44,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( dev-lang/ruby:2.0 )"
+	ruby? ( dev-lang/ruby:2.1 )"
 DEPEND="${RDEPEND}
 	dev-util/ctags
 	sys-devel/autoconf

@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Main Nios II profile.
 
@@ -12,7 +11,7 @@ MULTILIB_ABIS="nios2"
 DEFAULT_ABI="nios2"
 LIBDIR_nios2="lib"
 CHOST_nios2="${CHOST}"
-ABI=${DEFAULT_ABI}
+ABI="${DEFAULT_ABI}"
 
 CFLAGS="-O2"
 CXXFLAGS="${CFLAGS}"

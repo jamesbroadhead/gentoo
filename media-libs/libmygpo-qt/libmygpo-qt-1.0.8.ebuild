@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit cmake-utils
@@ -29,6 +28,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:4 )"
 
 DOCS=( AUTHORS README )
+PATCHES=( ${FILESDIR}/${P}-fix-JsonCreatorTest-failure.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare

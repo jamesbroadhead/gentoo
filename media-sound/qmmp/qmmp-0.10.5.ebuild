@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,11 +10,11 @@ DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 else
 	SRC_URI=""
-	ESVN_REPO_URI="https://qmmp.googlecode.com/svn/trunk/qmmp/"
-	KEYWORDS=""
+	ESVN_REPO_URI="https://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp/"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"

@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit autotools eutils
@@ -19,7 +18,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="flac"
 
 RDEPEND=">=media-libs/libogg-1.3.0

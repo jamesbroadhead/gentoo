@@ -21,7 +21,7 @@ fi
 ES_HOME=${ES_HOME:="/usr/share/elasticsearch"}
 ES_USER=${ES_USER:="elasticsearch"}
 ES_GROUP=${ES_GROUP:="elasticsearch"}
-ES_GC_LOG_FILE=${ES_GC_LOG_FILE:="${LOG_DIR}/gc.log"}
+ES_GC_LOG_FILE=${ES_GC_LOG_FILE:="/dev/null"}
 MAX_OPEN_FILES=${MAX_OPEN_FILES:=65535}
 MAX_MAP_COUNT=${MAX_MAP_COUNT:=262144}
 
@@ -82,6 +82,7 @@ start() {
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${PID_DIR}"
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${ES_BASE_PATH}"
 	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${LOG_DIR}"
+	checkpath -d -o root:root -m755 "${CONF_DIR}/scripts"
 
 	start-stop-daemon --start \
 		--background \

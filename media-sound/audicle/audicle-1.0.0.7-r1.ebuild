@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs flag-o-matic
@@ -40,7 +39,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	sed -i \
 		-e 's@../ftgl_lib/FTGL/include@/usr/include/FTGL@' \

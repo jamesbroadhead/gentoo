@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PLOCALES="ar_SA ca_ES cs_CZ de_DE es_ES fi_FI fr_FR hr_HR hu_HU id_ID it_IT ja_JP ko_KR ms_MY nb_NO pl_PL pt_BR ru_RU sv_SE th_TH tr_TR zh_CN zh_TW"
@@ -14,7 +13,7 @@ SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="
@@ -43,6 +42,8 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${PN}-${MY_PV}"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc5.patch )
 
 clean_locale() {
 	rm -R "${S}"/locales/"${1}" || die

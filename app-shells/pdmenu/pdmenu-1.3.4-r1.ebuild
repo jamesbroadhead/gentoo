@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A simple console menu program"
 HOMEPAGE="http://joeyh.name/code/pdmenu/"
@@ -12,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/pdmenu_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips x86"
 IUSE="nls gpm examples"
 
 DEPEND="
@@ -27,6 +26,8 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-impl-dec.patch
 )
+
+DOCS=( doc/ANNOUNCE doc/BUGS doc/TODO )
 
 src_prepare() {
 	default
@@ -47,12 +48,11 @@ src_compile() {
 
 src_install() {
 	dobin "${PN}"
-	dodoc doc/ANNOUNCE doc/BUGS doc/TODO
 	use examples && dodoc -r examples
 	mv "doc/${PN}.man" "doc/${PN}.1" || die
 	mv "doc/${PN}rc.man" "doc/${PN}rc.5" || die
 	doman "doc/${PN}.1" "doc/${PN}rc.5"
-
+	einstalldocs
 }
 
 pkg_postinst() {

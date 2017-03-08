@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -20,7 +19,7 @@ IUSE=""
 RDEPEND=">=dev-libs/glib-2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	>=dev-perl/extutils-pkgconfig-1.0.0
+	>=dev-perl/ExtUtils-PkgConfig-1.0.0
 	>=dev-perl/ExtUtils-Depends-0.300.0
 	dev-perl/Log-Agent
 "

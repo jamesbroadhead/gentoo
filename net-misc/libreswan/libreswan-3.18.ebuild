@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -8,7 +7,7 @@ inherit systemd toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/libreswan/libreswan.git"
@@ -23,7 +22,7 @@ IUSE="caps curl dnssec ldap pam systemd"
 
 COMMON_DEPEND="
 	dev-libs/gmp:0=
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	dev-libs/nspr
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )

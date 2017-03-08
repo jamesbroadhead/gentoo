@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # This file contains descriptions of L10N USE_EXPAND flags.
 
@@ -94,6 +93,7 @@ is - Icelandic
 it - Italian
 ja - Japanese
 ka - Georgian
+kab - Kabyle
 kk - Kazakh
 km - Central Khmer
 kmr-Latn - Northern Kurdish (Latin script)

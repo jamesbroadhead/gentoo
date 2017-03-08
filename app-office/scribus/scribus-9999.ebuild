@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -74,8 +73,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-docdir.patch
-	"${FILESDIR}"/${PN}-1.5.2-fpic.patch
+	"${FILESDIR}"/${P}-docdir.patch
 	)
 
 src_prepare() {

@@ -1,13 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
 
 EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
-VERSION_BUSYBOX='1.20.2'
+VERSION_BUSYBOX='1.26.0'
 VERSION_DMRAID='1.0.0.rc16-3'
 VERSION_MDADM='3.1.5'
 VERSION_FUSE='2.8.6'

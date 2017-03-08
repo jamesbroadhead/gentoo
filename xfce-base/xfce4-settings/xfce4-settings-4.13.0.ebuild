@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit fdo-mime gnome2-utils
@@ -11,7 +10,7 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="input_devices_libinput libcanberra libnotify upower +xklavier"
 
 RDEPEND=">=dev-libs/dbus-glib-0.100
@@ -23,7 +22,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.100
 	>=x11-libs/libXi-1.3
 	>=x11-libs/libXrandr-1.2
 	>=xfce-base/garcon-0.2
-	>=xfce-base/exo-0.8
+	>=xfce-base/exo-0.11
 	>=xfce-base/libxfce4ui-4.12
 	>=xfce-base/libxfce4util-4.12
 	>=xfce-base/xfconf-4.12

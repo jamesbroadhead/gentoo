@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="4"
 
@@ -15,7 +14,7 @@ SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="pam"
 
 RDEPEND=">=sys-libs/ncurses-5.2
@@ -46,7 +45,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	./configure $(usex pam '' '--without-pam') || die
+	${CONFIG_SHELL:-/bin/sh} ./configure $(usex pam '' '--without-pam') || die
 
 	sed -i \
 		-e "s:-pipe -O2:${CFLAGS}:" \

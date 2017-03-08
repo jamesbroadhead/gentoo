@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 WANT_AUTOMAKE="none"
@@ -14,11 +13,11 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="alsa aqua athena dbus games gconf gif gpm gtk gzip-el hesiod jpeg kerberos livecd m17n-lib motif pax_kernel png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
@@ -62,10 +61,7 @@ DEPEND="${RDEPEND}
 	dbus? ( virtual/pkgconfig )
 	X? ( virtual/pkgconfig )
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? (
-		sys-apps/attr
-		sys-apps/paxctl
-	)"
+	pax_kernel? ( sys-apps/attr )"
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"

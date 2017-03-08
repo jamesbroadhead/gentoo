@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -13,7 +12,7 @@ SRC_URI="https://pypi.python.org/packages/f6/33/16ad65a8973cb8bcb494af09ee1b9ab5
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"

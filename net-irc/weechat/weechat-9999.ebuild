@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -11,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
-	SRC_URI="https://weechat.org/files/src/${P}.tar.bz2"
+	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
 	KEYWORDS="~amd64"
 fi
 
@@ -39,7 +38,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 dev-lang/ruby:2.0 ) )
+	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )

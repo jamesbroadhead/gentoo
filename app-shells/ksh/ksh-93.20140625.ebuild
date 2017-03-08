@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -16,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~floppym/distfiles/INIT.${KSH_PV}.tgz
 
 LICENSE="CPL-1.0 EPL-1.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~ia64 ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="!app-shells/pdksh"

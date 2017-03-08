@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 KDE_REQUIRED="optional"
@@ -24,7 +23,7 @@ DEPEND="
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4
 	dev-qt/qtsvg:4
-	kde? ( $(add_kdebase_dep kdelibs) )
+	kde? ( kde-frameworks/kdelibs:4 )
 "
 RDEPEND="${DEPEND}"
 

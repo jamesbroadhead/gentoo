@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -35,7 +34,7 @@ DEPEND="
 	app-text/pandoc
 	dev-haskell/pandoc-citeproc[bibutils]
 	dev-texlive/texlive-fontsrecommended
-	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexrecommended
 	virtual/pkgconfig
 	api? (
 		media-fonts/dejavu

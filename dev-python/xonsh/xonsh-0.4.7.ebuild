@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -43,6 +42,7 @@ python_test() {
 }
 
 pkg_postinst() {
+	elog "Please install"
 	optfeature "Jupyter kernel support" dev-python/jupyter
 	optfeature "Alternative to readline backend" dev-python/prompt_toolkit
 }

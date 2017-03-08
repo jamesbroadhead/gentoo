@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -53,7 +52,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if use X && !use xwayland
+	if use X && ! use xwayland
 	then
 		elog "xwayland use flag is required for X11 applications support"
 	fi

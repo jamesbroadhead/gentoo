@@ -1,13 +1,12 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 inherit kde5
 
 DESCRIPTION="Manage print jobs and printers in Plasma"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gtk"
 
 DEPEND="

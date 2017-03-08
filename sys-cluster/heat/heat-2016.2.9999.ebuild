@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 )
@@ -29,7 +28,7 @@ RDEPEND="
 	>=dev-python/croniter-0.3.4[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
 	!~dev-python/cryptography-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/debtcollector-1.2.0
+	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-2.10.0[${PYTHON_USEDEP}]
@@ -114,8 +113,8 @@ RDEPEND="
 	>=dev-python/webob-1.2.3-r1[${PYTHON_USEDEP}]
 	>=dev-python/yaql-1.1.0[${PYTHON_USEDEP}]"
 
-#PATCHES=(
-#)
+PATCHES=(
+)
 
 pkg_setup() {
 	enewgroup heat

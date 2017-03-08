@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=(python2_7)
@@ -24,7 +23,7 @@ else
 	  http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz
 	  mirror://ubuntu/pool/universe/${PN:0:1}/${PN}/${PN}_${PV}-${DEBIAN_PATCH}.debian.tar.xz
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	PATCHES=(
 	  "${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
 	  "${WORKDIR}"/debian/patches/Makefile.am-use-C.UTF-8

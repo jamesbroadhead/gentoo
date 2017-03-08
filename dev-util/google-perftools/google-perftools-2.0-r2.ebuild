@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,7 +9,7 @@ inherit toolchain-funcs eutils flag-o-matic autotools-utils
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://github.com/gperftools/gperftools"
-SRC_URI="https://gperftools.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://github.com/gperftools/gperftools/archive/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
@@ -19,7 +18,7 @@ SLOT="0/4"
 # linux x86/amd64/ppc/ppc64/arm
 # OSX ppc/amd64
 # AIX ppc/ppc64
-KEYWORDS="-* amd64 arm ~ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="-* amd64 arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="largepages +debug minimal test static-libs"
 
 DEPEND="sys-libs/libunwind"

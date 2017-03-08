@@ -1,8 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
+
+inherit prefix
 
 DESCRIPTION="Simple information system script"
 HOMEPAGE="https://github.com/dylanaraps/neofetch"
@@ -24,3 +25,12 @@ RDEPEND="${DEPEND}
 		media-libs/imlib2
 		media-gfx/imagemagick
 	)"
+
+src_prepare() {
+	hprefixify ${PN}
+	default
+}
+
+src_install() {
+	emake DESTDIR="${ED}" install
+}

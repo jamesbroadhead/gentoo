@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -19,6 +18,9 @@ RDEPEND="dev-perl/Linux-Pid
 	!<www-apache/mod_perl-2.0.5
 	>=www-apache/mod_perl-2.0.5"
 DEPEND="${RDEPEND}
-	test? ( >=dev-perl/Apache-Test-1.360.0 )"
+	test? (
+		>=dev-perl/Apache-Test-1.360.0
+		!www-apache/mpm_itk
+	)"
 
 SRC_TEST="do"

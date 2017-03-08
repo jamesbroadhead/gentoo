@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -14,7 +13,7 @@ SRC_URI="http://unbound.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc ppc64 ~x86"
 IUSE="debug dnstap +ecdsa gost libressl python selinux static-libs test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -24,7 +23,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # is fixed.
 
 CDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
-	>=dev-libs/libevent-2.0.21[${MULTILIB_USEDEP}]
+	>=dev-libs/libevent-2.0.21:0=[${MULTILIB_USEDEP}]
 	libressl? ( >=dev-libs/libressl-2.2.4:0[${MULTILIB_USEDEP}] )
 	!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	dnstap? (

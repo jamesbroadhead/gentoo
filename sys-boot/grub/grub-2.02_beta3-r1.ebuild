@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,7 +22,7 @@ if [[ ${PV} != 9999 ]]; then
 			https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://git.sv.gnu.org/grub.git
@@ -115,7 +114,7 @@ RDEPEND+="
 DEPEND+=" !!=media-libs/freetype-2.5.4"
 
 STRIP_MASK="*/grub/*/*.{mod,img}"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 QA_EXECSTACK="
 	usr/bin/grub*-emu*
@@ -125,11 +124,7 @@ QA_EXECSTACK="
 	usr/lib*/grub/*/kernel.img
 "
 
-QA_WX_LOAD="
-	usr/lib*/grub/*/kernel.exec
-	usr/lib*/grub/*/kernel.img
-	usr/lib*/grub/*/*.image
-"
+QA_WX_LOAD="usr/lib/grub/*"
 
 QA_PRESTRIPPED="
 	usr/lib.*/grub/.*/kernel.img

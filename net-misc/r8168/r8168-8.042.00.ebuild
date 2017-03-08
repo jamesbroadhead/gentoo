@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ HOMEPAGE="http://www.realtek.com.tw"
 SRC_URI="http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0005-${P}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 MODULE_NAMES="r8168(net:${S}/src)"
 BUILD_TARGETS="modules"

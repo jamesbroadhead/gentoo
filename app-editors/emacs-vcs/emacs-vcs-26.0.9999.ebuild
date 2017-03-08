@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -29,10 +28,10 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
-IUSE="acl alsa aqua athena cairo dbus games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
@@ -46,6 +45,7 @@ RDEPEND="sys-libs/ncurses:0
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls )
+	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	X? (
 		x11-libs/libXmu
@@ -59,7 +59,7 @@ RDEPEND="sys-libs/ncurses:0
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2 )
+		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
@@ -73,7 +73,7 @@ RDEPEND="sys-libs/ncurses:0
 		gtk? (
 			xwidgets? (
 				x11-libs/gtk+:3
-				net-libs/webkit-gtk:3=
+				net-libs/webkit-gtk:4=
 			)
 			!xwidgets? (
 				gtk3? ( x11-libs/gtk+:3 )
@@ -92,10 +92,7 @@ RDEPEND="sys-libs/ncurses:0
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? (
-		sys-apps/attr
-		sys-apps/paxctl
-	)"
+	pax_kernel? ( sys-apps/attr )"
 
 if [[ ${PV##*.} = 9999 ]]; then
 	DEPEND="${DEPEND}
@@ -115,6 +112,8 @@ src_prepare() {
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
+
+		bash -c "autoreconf() { :; }; . autogen.sh --no-check" || die #605400
 	fi
 
 	eapply_user
@@ -124,6 +123,7 @@ src_prepare() {
 		|| die "unable to sed ctags.1"
 
 	AT_M4DIR=m4 eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {
@@ -236,12 +236,15 @@ src_configure() {
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
+		$(use_with dynamic-loading modules) \
 		$(use_with gpm) \
 		$(use_with hesiod) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
 		$(use_with selinux) \
 		$(use_with ssl gnutls) \
+		$(use_with systemd libsystemd) \
+		$(use_with threads) \
 		$(use_with wide-int) \
 		$(use_with zlib) \
 		${myconf}
@@ -269,6 +272,7 @@ src_install () {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
 	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
+	rm -rf "${ED}/usr/$(get_libdir)"
 	rm -rf "${ED}"/var
 
 	# remove unused <version>/site-lisp dir

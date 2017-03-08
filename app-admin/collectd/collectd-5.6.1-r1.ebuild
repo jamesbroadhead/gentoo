@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 
@@ -124,7 +123,7 @@ COMMON_DEPEND="
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
-	collectd_plugins_xencpu?		( app-emulation/xen-tools )
+	collectd_plugins_xencpu?		( app-emulation/xen-tools:= )
 
 	kernel_FreeBSD? (
 		collectd_plugins_disk?		( sys-libs/libstatgrab:= )
@@ -144,7 +143,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	collectd_plugins_java?			( >=virtual/jre-1.6 )
 	collectd_plugins_syslog?		( virtual/logger )
-	selinux?				( sec-policy/selinux-collectd )"
+	selinux?				( sec-policy/selinux-collectd )
+	!<sys-apps/openrc-0.18.2"
 
 REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )

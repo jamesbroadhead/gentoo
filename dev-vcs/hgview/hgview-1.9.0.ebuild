@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -26,7 +25,7 @@ RDEPEND="dev-vcs/mercurial[${PYTHON_USEDEP}]
 	qt4? (
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/PyQt4[X,${PYTHON_USEDEP}]
-		dev-python/qscintilla-python[${PYTHON_USEDEP}]
+		dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	doc? (

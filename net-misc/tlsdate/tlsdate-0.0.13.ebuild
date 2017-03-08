@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=6
 
 inherit autotools eutils systemd vcs-snapshot user
 
@@ -12,13 +11,17 @@ SRC_URI="https://github.com/ioerror/tlsdate/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~s390 ~sh ~sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ia64 m68k ~mips s390 sh sparc x86"
 IUSE="dbus +seccomp static-libs"
 
-DEPEND="dev-libs/openssl
-	dev-libs/libevent
+DEPEND="dev-libs/openssl:0=
+	dev-libs/libevent:=
 	dbus? ( sys-apps/dbus )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tlsdated-service.patch
+)
 
 src_prepare() {
 	# Use the system cert store rather than a custom one specific
@@ -26,7 +29,8 @@ src_prepare() {
 	sed -i \
 		-e 's:/tlsdate/ca-roots/tlsdate-ca-roots.conf:/ssl/certs/ca-certificates.crt:' \
 		Makefile.am || die
-	epatch "${FILESDIR}"/${P}-tlsdated-service.patch
+
+	default
 
 	eautoreconf
 }

@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -15,7 +14,7 @@ SRC_URI="http://guichaz.free.fr/iotop/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS ~VM_EVENT_COUNTERS"

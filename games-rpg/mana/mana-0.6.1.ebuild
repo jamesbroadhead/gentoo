@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils cmake-utils games
@@ -41,10 +40,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Fix-missing-virtual-destructors-and-guichan-use.patch
 	"${FILESDIR}"/${P}-Trick-gcc-into-importing-C99-stdint.h-when-C-11-is-n.patch
 	"${FILESDIR}"/${P}-Import-cstdint-for-int64_t.patch
-	)
+)
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	epatch_user
 
 	if [[ ${LINGUAS+set} ]]; then

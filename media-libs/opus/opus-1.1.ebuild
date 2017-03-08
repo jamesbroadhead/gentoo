@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 AUTOTOOLS_AUTORECONF="1"
@@ -14,7 +13,7 @@ else
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
 fi
 
-DESCRIPTION="Open versatile codec designed for interactive speech and audio transmission over the internet"
+DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
 HOMEPAGE="http://opus-codec.org/"
 SRC_URI="http://downloads.xiph.org/releases/opus/${P}.tar.gz"
 

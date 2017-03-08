@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Mike Gilbert <floppym@gentoo.org> (17 Nov 2016)
 # Enable both efi and pc by default.
@@ -15,10 +14,6 @@ sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 # James Le Cuirot <chewi@gentoo.org> (01 Aug 2016)
 # Most users don't need a multilib JVM.
 dev-java/icedtea-bin -multilib
-
-# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
-# Enable luajit (for OSC) by default
-media-video/mpv lua luajit
 
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2014)
 # Packages that should be multilib by default.

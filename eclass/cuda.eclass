@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit flag-o-matic toolchain-funcs versionator
 
@@ -31,7 +30,7 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 
 # @FUNCTION: cuda_gccdir
 # @USAGE: [-f]
-# @RETURN: gcc bindir compatible with current cuda, optionally (-f) prefixed with "--compiler-bindir="
+# @RETURN: gcc bindir compatible with current cuda, optionally (-f) prefixed with "--compiler-bindir "
 # @DESCRIPTION:
 # Helper for determination of the latest gcc bindir supported by
 # then current nvidia cuda toolkit.
@@ -39,7 +38,7 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 # Example:
 # @CODE
 # cuda_gccdir -f
-# -> --compiler-bindir="/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.3"
+# -> --compiler-bindir "/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.3"
 # @CODE
 cuda_gccdir() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -47,7 +46,7 @@ cuda_gccdir() {
 	local gcc_bindir ver args="" flag ret
 
 	# Currently we only support the gnu compiler suite
-	if [[ $(tc-getCXX) != *g++* ]]; then
+	if  ! tc-is-gcc ; then
 		ewarn "Currently we only support the gnu compiler suite"
 		return 2
 	fi
@@ -55,7 +54,7 @@ cuda_gccdir() {
 	while [ "$1" ]; do
 		case $1 in
 			-f)
-				flag="--compiler-bindir="
+				flag="--compiler-bindir "
 				;;
 			*)
 				;;
@@ -110,7 +109,7 @@ cuda_sanitize() {
 	NVCCFLAGS+=" $(cuda_gccdir -f)"
 
 	# Tell nvcc which flags should be used for underlying C compiler
-	NVCCFLAGS+=" --compiler-options=\"${CXXFLAGS}\" --linker-options=\"${rawldflags// /,}\""
+	NVCCFLAGS+=" --compiler-options \"${CXXFLAGS}\" --linker-options \"${rawldflags// /,}\""
 
 	debug-print "Using ${NVCCFLAGS} for cuda"
 	export NVCCFLAGS

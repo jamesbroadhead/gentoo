@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 
@@ -9,7 +8,7 @@ inherit autotools linux-mod multilib toolchain-funcs versionator
 MY_PV=$(delete_version_separator '_')
 MY_PN="${PN/-kernel}"
 MY_P="${MY_PN}-${MY_PV}"
-PVER="20160801-2"
+PVER="20170212"
 
 DESCRIPTION="The OpenAFS distributed file system kernel module"
 HOMEPAGE="https://www.openafs.org/"
@@ -22,7 +21,7 @@ SRC_URI="
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 S=${WORKDIR}/${MY_P}

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
@@ -16,7 +15,7 @@ DESCRIPTION="Chronic is a natural language date/time parser written in pure Ruby
 HOMEPAGE="https://github.com/mojombo/chronic"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 

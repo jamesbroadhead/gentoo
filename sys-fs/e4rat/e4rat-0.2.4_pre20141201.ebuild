@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit cmake-utils linux-info readme.gentoo-r1
@@ -12,14 +11,14 @@ SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${PN}-0.2.4_pre20141201.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
 	dev-lang/perl:=
 	>=dev-libs/boost-1.42:=
 	sys-fs/e2fsprogs
-	sys-process/audit
+	sys-process/audit[static-libs(+)]
 	sys-process/lsof
 "
 DEPEND="${DEPEND}"

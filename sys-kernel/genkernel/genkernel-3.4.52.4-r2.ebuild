@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
@@ -42,7 +41,7 @@ else
 	inherit bash-completion-r1 eutils
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"

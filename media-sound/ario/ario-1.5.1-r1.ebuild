@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 GNOME2_LA_PUNT=yes
@@ -14,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}-player/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="audioscrobbler dbus debug +idle libnotify nls python taglib zeroconf"
 
 RDEPEND=">=dev-libs/glib-2.14:2

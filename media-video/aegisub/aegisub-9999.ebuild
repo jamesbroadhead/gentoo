@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -40,14 +39,13 @@ RDEPEND="
 	openal? ( media-libs/openal )
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
-	spell? ( app-text/hunspell )
-	uchardet? ( dev-libs/uchardet )
+	spell? ( app-text/hunspell:= )
+	uchardet? ( app-i18n/uchardet )
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	oss? ( virtual/os-headers )
 	test? (
 		~dev-cpp/gtest-1.7.0
 		dev-lua/busted

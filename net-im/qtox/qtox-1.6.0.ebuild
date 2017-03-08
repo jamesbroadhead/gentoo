@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -39,7 +38,7 @@ RDEPEND="
 			x11-libs/gtk+:2
 			x11-libs/cairo[X]
 			x11-libs/pango[X] )
-	net-libs/tox[av]
+	net-libs/tox:0/0.0[av]
 	X? ( x11-libs/libX11
 		x11-libs/libXScrnSaver )
 "

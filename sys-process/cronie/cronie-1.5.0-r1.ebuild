@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ SRC_URI="https://fedorahosted.org/releases/c/r/cronie/${P}.tar.gz"
 HOMEPAGE="https://fedorahosted.org/cronie/wiki"
 
 LICENSE="ISC BSD BSD-2 GPL-2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="anacron +inotify pam selinux"
 
 DEPEND="pam? ( virtual/pam )

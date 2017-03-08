@@ -1,10 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit autotools eutils git-r3
+inherit autotools git-r3
 
 DESCRIPTION="iscsi client library and utilities"
 HOMEPAGE="https://github.com/sahlberg/libiscsi"
@@ -33,5 +32,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

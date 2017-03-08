@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit gnome2
@@ -31,7 +30,7 @@ COMMON_DEPEND="
 	media-libs/gst-plugins-base:1.0[introspection]
 	>=media-libs/harfbuzz-0.9.9:=
 	media-libs/clutter-gst:3.0[introspection]
-	media-libs/musicbrainz:5
+	media-libs/musicbrainz:5=
 	net-libs/webkit-gtk:4[introspection]
 	x11-libs/gtksourceview:3.0[introspection]
 	x11-libs/libX11

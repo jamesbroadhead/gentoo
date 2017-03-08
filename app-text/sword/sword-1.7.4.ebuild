@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic
@@ -11,7 +10,7 @@ SRC_URI="http://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~ppc-macos"
 IUSE="curl debug doc icu static-libs"
 
 RDEPEND="sys-libs/zlib

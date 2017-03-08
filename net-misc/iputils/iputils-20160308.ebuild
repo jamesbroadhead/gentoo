@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # For released versions, we precompile the man/html pages and store
 # them in a tarball on our mirrors.  This avoids ugly issues while
@@ -63,7 +62,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch
 }
 

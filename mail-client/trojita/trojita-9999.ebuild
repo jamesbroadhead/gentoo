@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -29,7 +28,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	crypt? (
 		dev-libs/mimetic
-		kde-apps/gpgmepp:5
+		>=app-crypt/gpgme-1.8.0[cxx,qt5]
 	)
 	dbus? ( dev-qt/qtdbus:5 )
 	password? ( dev-libs/qtkeychain[qt5] )

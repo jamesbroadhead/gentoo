@@ -1,11 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libcdr/"
-inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing the Corel cdr documents"
@@ -33,21 +31,20 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	eapply_user
+	default
 	[[ -d m4 ]] || mkdir "m4"
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable static-libs static) \
 		--disable-werror \
 		$(use_with doc docs) \
+		$(use_enable static-libs static) \
 		$(use_enable test tests)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

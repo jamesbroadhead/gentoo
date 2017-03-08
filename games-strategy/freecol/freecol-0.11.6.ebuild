@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils java-pkg-2 java-ant-2 games
@@ -11,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEP="dev-java/jsr173

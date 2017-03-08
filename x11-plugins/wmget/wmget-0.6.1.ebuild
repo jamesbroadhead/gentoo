@@ -1,13 +1,11 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools
 
 DESCRIPTION="a libcurl based dockapp for automated downloads"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmget"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/wmget"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"

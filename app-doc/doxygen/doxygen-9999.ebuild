@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -13,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/doxygen/doxygen/archive/Release_${PV//\./_}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 	S="${WORKDIR}/${PN}-Release_${PV//\./_}"
 fi
 SRC_URI+=" https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
@@ -29,7 +28,7 @@ RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
 	virtual/libiconv
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:= )
 	dot? (
 		media-gfx/graphviz
 		media-libs/freetype

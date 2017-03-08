@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -16,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz"
+	SRC_URI="http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 fi
 

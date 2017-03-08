@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -20,6 +19,7 @@ IUSE="debug"
 RDEPEND="
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
 	$(add_kdeapps_dep kdepim-common-libs)
+	$(add_kdeapps_dep ktimezoned)
 	media-libs/phonon[qt4]
 	x11-libs/libX11
 "

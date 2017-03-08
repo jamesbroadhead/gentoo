@@ -1,10 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.1"
 KDE_GCC_MINIMAL="4.9"
 KDE_HANDBOOK="forceoptional"
 KDE_SELINUX_MODULE="games"
@@ -15,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/games/kshisen/
 	https://games.kde.org/game.php?game=kshisen
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

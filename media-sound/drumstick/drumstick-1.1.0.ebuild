@@ -1,10 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.0"
 inherit cmake-utils fdo-mime gnome2-utils
 
 DESCRIPTION="Qt/C++ wrapper for ALSA sequencer"
@@ -15,6 +13,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc fluidsynth pulseaudio"
+
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-qt/qtcore-5.7:5
@@ -56,6 +56,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=OFF
 		$(cmake-utils_use_find_package doc Doxygen)
 	)
 

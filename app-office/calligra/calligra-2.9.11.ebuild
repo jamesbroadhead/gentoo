@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # note: files that need to be checked for dependencies etc:
 # CMakeLists.txt, kexi/CMakeLists.txt kexi/migration/CMakeLists.txt
@@ -41,8 +40,8 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
-+glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +kdepim +lcms
-marble mysql +okular openexr +pdf postgres spacenav sybase test tiff +threads
++glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms mysql
++okular openexr +pdf +pim postgres spacenav sybase test tiff +threads
 +truetype vc xbase +xml"
 
 # Don't use Active, it's broken on desktops.
@@ -56,7 +55,7 @@ REQUIRED_USE="
 	calligra_features_author? ( calligra_features_words )
 	calligra_features_gemini? ( opengl )
 	calligra_features_krita? ( eigen exif lcms opengl )
-	calligra_features_plan? ( kdepim )
+	calligra_features_plan? ( pim )
 	calligra_features_sheets? ( eigen )
 	calligra_features_stage? ( webkit )
 	vc? ( calligra_features_krita )
@@ -93,16 +92,14 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	kdcraw? ( $(add_kdeapps_dep libkdcraw) )
-	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 	lcms? (
 		media-libs/lcms:2
 		x11-libs/libX11
 	)
-	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
 	okular? ( >=kde-apps/okular-4.4:4=[aqua=] )
 	opengl? (
-		media-libs/glew
+		media-libs/glew:0
 		virtual/glu
 	)
 	openexr? ( media-libs/openexr )
@@ -110,6 +107,7 @@ RDEPEND="
 		app-text/poppler:=
 		media-gfx/pstoedit
 	)
+	pim? ( $(add_kdeapps_dep kdepimlibs) )
 	postgres? (
 		dev-db/postgresql:*
 		dev-libs/libpqxx
@@ -181,7 +179,8 @@ src_configure() {
 		"-DCREATIVEONLY=OFF"
 		"-DPACKAGERS_BUILD=OFF"
 		"-DWITH_Soprano=OFF"
-		"-DWITH_KActivities=OFF"	# deprecated Plasma 4 activities integration
+		"-DWITH_KActivities=OFF"
+		"-DWITH_CalligraMarble=OFF"
 	)
 
 	# regular options
@@ -206,15 +205,14 @@ src_configure() {
 		$(cmake-utils_use_with jpeg JPEG)
 		$(cmake-utils_use_with jpeg2k OpenJPEG)
 		$(cmake-utils_use_with kdcraw Kdcraw)
-		$(cmake-utils_use_with kdepim KdepimLibs)
 		$(cmake-utils_use_with lcms LCMS2)
-		$(cmake-utils_use_with marble CalligraMarble)
 		$(cmake-utils_use_with mysql MySQL)
 		$(cmake-utils_use_with okular Okular)
 		$(cmake-utils_use_with openexr OpenEXR)
 		$(cmake-utils_use opengl USEOPENGL)
 		$(cmake-utils_use_with pdf Poppler)
 		$(cmake-utils_use_with pdf Pstoedit)
+		$(cmake-utils_use_with pim KdepimLibs)
 		$(cmake-utils_use_with postgres CalligraPostgreSQL)
 		$(cmake-utils_use_build postgres pqxx)
 		$(cmake-utils_use_with spacenav Spnav)

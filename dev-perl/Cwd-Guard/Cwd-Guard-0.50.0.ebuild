@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Temporary changing working directory (chdir)"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 IUSE="test minimal"
 # Cwd -> perl-File-Spec
 RDEPEND="

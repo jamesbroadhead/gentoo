@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
@@ -22,7 +21,7 @@ REQUIRED_USE="ayatana? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.28.0:2
-	>=x11-libs/gtk+-3.0:3[introspection?]
+	>=x11-libs/gtk+-3.0:3[introspection?,X]
 	>=dev-cpp/gtkmm-3.0.0:3.0
 	>=dev-cpp/glibmm-2.28.0:2
 	>=dev-libs/libsigc++-2.2.4.2:2

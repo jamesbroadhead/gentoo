@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="4"
 
@@ -12,7 +11,7 @@ SRC_URI="mirror://gnu/groff/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples X"
 
 RDEPEND="
@@ -74,5 +73,13 @@ src_install() {
 	dosym eqn /usr/bin/geqn
 	dosym tbl /usr/bin/gtbl
 
-	use examples || rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	if ! use examples ; then
+		# The pdf files might not be generated if ghostscript is unavailable. #602020
+		local pdf="${ED}/usr/share/doc/${PF}/examples/mom/mom-pdf.pdf"
+		if [[ -e ${pdf} ]] ; then
+			# Keep mom-pdf.pdf since it's more of a manual than an example. #454196 #516732
+			mv "${pdf}" "${ED}"/usr/share/doc/${PF}/pdf/ || die
+		fi
+		rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	fi
 }

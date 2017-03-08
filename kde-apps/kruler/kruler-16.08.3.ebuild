@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ DESCRIPTION="Screen ruler for Plasma"
 HOMEPAGE="https://www.kde.org/applications/graphics/kruler/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 DEPEND="

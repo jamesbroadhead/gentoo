@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -21,7 +20,7 @@ IUSE="debug"
 
 DEPEND="
 	dev-lang/R
-	$(add_kdebase_dep katepart)"
+	$(add_kdeapps_dep katepart)"
 RDEPEND="${DEPEND}"
 
 src_configure() {

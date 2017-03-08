@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -35,7 +34,7 @@ DEPEND="${RDEPEND}
 		dev-python/flask-mongoengine[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/flask-babelex[${PYTHON_USEDEP}]
-		dev-python/shapely[${PYTHON_USEDEP}]
+		sci-libs/Shapely[${PYTHON_USEDEP}]
 		dev-python/geoalchemy2[${PYTHON_USEDEP}]
 		>=dev-python/pillow-2.9[${PYTHON_USEDEP},jpeg]
 	)"

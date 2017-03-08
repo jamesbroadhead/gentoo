@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,7 +11,7 @@ DESCRIPTION="Wrapper library for world map components as marble, openstreetmap a
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

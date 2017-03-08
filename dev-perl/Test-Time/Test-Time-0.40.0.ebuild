@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Overrides the time() and sleep() core functions for testing"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 RDEPEND=""

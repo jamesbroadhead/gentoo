@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ HOMEPAGE="https://dracut.wiki.kernel.org"
 SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ~ppc64 sparc x86"
 IUSE="debug selinux systemd"
 
 RESTRICT="test"
@@ -36,7 +35,7 @@ RDEPEND="${CDEPEND}
 		sys-libs/libsepol
 		sec-policy/selinux-dracut
 	)
-	"
+	!>=app-shells/bash-4.4"
 DEPEND="${CDEPEND}
 	app-text/asciidoc
 	>=dev-libs/libxslt-1.1.26

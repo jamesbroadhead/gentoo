@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -27,7 +26,7 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep kdelibs 'udev,udisks(+)')
+	kde-frameworks/kdelibs:4[udev,udisks(+)]
 	$(add_kdeapps_dep audiocd-kio)
 "
 

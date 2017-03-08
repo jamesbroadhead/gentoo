@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -65,7 +64,7 @@ src_configure() {
 		-DENABLE_CANTOR=$(usex cantor)
 		-DENABLE_FFTW=$(usex fftw)
 		-DENABLE_FITS=$(usex fits)
-		$(cmake-utils_use_find_package hdf5 HDF5)
+		-DENABLE_HDF5=$(usex hdf5)
 		-DENABLE_NETCDF=$(usex netcdf)
 	)
 

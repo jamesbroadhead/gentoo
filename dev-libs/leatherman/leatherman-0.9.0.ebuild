@@ -1,10 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 USE_RUBY="ruby21 ruby22"
-CMAKE_MIN_VERSION="3.2.2"
 
 inherit cmake-utils multilib ruby-ng
 
@@ -17,7 +15,7 @@ S="${S}/all/${P}"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="debug test"
-KEYWORDS="amd64 ~hppa ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 
 CDEPEND="
 	>=sys-devel/gcc-4.8:*

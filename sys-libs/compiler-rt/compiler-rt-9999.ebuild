@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-CMAKE_MIN_VERSION=3.4.3
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 # TODO: fix unnecessary dep on Python upstream
@@ -18,15 +18,21 @@ EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
-SLOT="0/${PV%.*}"
+# Note: this needs to be updated to match version of clang-9999
+SLOT="5.0.0"
 KEYWORDS=""
-IUSE=""
+IUSE="+clang test"
 
-RDEPEND="
-	!<sys-devel/llvm-4.0"
-DEPEND="${RDEPEND}
-	~sys-devel/llvm-${PV}
+LLVM_SLOT=${SLOT%%.*}
+# llvm-4 needed for --cmakedir
+DEPEND="
+	>=sys-devel/llvm-4
+	clang? ( sys-devel/clang )
+	test? ( =sys-devel/clang-${PV%_*}*:${LLVM_SLOT} )
 	${PYTHON_DEPS}"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 test_compiler() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c - \
@@ -37,7 +43,13 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	if ! test_compiler; then
+	if use clang; then
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		# ensure we can use clang before installing compiler-rt
+		local -x LDFLAGS="${LDFLAGS} -nodefaultlibs -lc"
+		strip-unsupported-flags
+	elif ! test_compiler; then
 		local extra_flags=( -nodefaultlibs -lc )
 		if test_compiler "${extra_flags[@]}"; then
 			local -x LDFLAGS="${LDFLAGS} ${extra_flags[*]}"
@@ -45,15 +57,11 @@ src_configure() {
 		fi
 	fi
 
-	local clang_version=4.0.0
-	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		# used to find cmake modules
-		-DLLVM_LIBDIR_SUFFIX="${libdir#lib}"
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${clang_version}"
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang
-		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${clang_version}"
+		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${SLOT}"
 
 		# currently lit covers only sanitizer tests
 		-DCOMPILER_RT_INCLUDE_TESTS=OFF
@@ -62,6 +70,58 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	# prepare a test compiler
+	# copy clang over since resource_dir is located relatively to binary
+	# therefore, we can put our new libraries in it
+	mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_SLOT}{/bin,$(get_libdir)},clang/${SLOT}/include} || die
+	cp "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/bin/clang{,++} \
+		"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/bin/ || die
+	cp "${EPREFIX}/usr/lib/clang/${SLOT}/include"/*.h \
+		"${BUILD_DIR}/lib/clang/${SLOT}/include/" || die
+
+	# builtins are not converted to lit yet, so run them manually
+	local tests=() f
+	cd "${S}"/test/builtins/Unit || die
+	while read -r -d '' f; do
+		# ppc subdir is unmaintained and lacks proper guards
+		# (and ppc builtins do not seem to be used anyway)
+		[[ ${f} == ./ppc/* ]] && continue
+		# these are special
+		[[ ${f} == ./cpu_model_test.c ]] && continue
+		[[ ${f} == ./gcc_personality_test.c ]] && continue
+		# unsupported
+		[[ ${f} == ./trampoline_setup_test.c ]] && continue
+		tests+=( "${f%.c}" )
+	done < <(find -name '*.c' -print0)
+
+	{
+		echo "check: ${tests[*]/#/check-}" &&
+		echo ".PHONY: check ${tests[*]/#/check-}" &&
+		for f in "${tests[@]}"; do
+			echo "check-${f}: ${f}" &&
+			echo "	${f}"
+		done
+	} > Makefile || die
+
+	local ABI
+	for ABI in $(get_all_abis); do
+		# not supported at all at the moment
+		[[ ${ABI} == x32 ]] && continue
+
+		rm -f "${tests[@]}" || die
+
+		einfo "Running tests for ABI=${ABI}"
+		# use -k to run all tests even if some fail
+		emake -k \
+			CC="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang" \
+			CFLAGS="$(get_abi_CFLAGS)" \
+			CPPFLAGS='-I../../../lib/builtins' \
+			LDFLAGS='-rtlib=compiler-rt' \
+			LDLIBS='-lm'
+	done
 }
 
 src_install() {

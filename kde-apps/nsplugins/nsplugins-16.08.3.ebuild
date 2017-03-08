@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -8,7 +7,7 @@ KMNAME="kde-baseapps"
 inherit kde4-meta pax-utils
 
 DESCRIPTION="Netscape plugins support for Konqueror"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="

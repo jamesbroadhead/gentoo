@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit cmake-utils
@@ -11,7 +10,7 @@ SRC_URI="mirror://sourceforge/gnomesword/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="dev-util/cmake"

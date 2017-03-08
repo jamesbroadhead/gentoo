@@ -1,11 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 #EGIT_BRANCH="releng3.0"
-KDE_DOC_DIR="doc/user"
 KDE_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
@@ -14,7 +12,7 @@ DESCRIPTION="KControl module for Wacom tablets"
 HOMEPAGE="http://kde-apps.org/content/show.php?action=content&content=114856"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 MY_PV=${PV/_/\~}

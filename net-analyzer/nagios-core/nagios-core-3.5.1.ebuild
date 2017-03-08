@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -21,7 +20,7 @@ DEPEND="virtual/mailx
 		lighttpd? ( www-servers/lighttpd dev-lang/php[cgi] )
 		apache2? ( || ( dev-lang/php[apache2] dev-lang/php[cgi] ) )
 	)
-	perl? ( >=dev-lang/perl-5.6.1-r7 )"
+	perl? ( >=dev-lang/perl-5.6.1-r7:= )"
 RDEPEND="${DEPEND}
 	!net-analyzer/nagios-imagepack
 	vim-syntax? ( app-vim/nagios-syntax )"

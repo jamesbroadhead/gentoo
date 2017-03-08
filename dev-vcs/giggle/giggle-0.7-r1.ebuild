@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -13,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/giggle"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="eds"
 
 RDEPEND="

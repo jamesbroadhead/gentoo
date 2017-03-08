@@ -1,9 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -37,4 +36,13 @@ all_ruby_prepare() {
 	# Remove .rspec options to avoid dependency on newer rspec when
 	# bootstrapping.
 	rm .rspec || die
+}
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby22|*ruby23)
+			# Psych and Syck are not supported by default anymore on ruby22.
+			rm spec/rspec/mocks/serialization_spec.rb || die
+			;;
+	esac
 }

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ WX_GTK_VER="3.0"
 inherit cmake-utils eutils l10n pax-utils toolchain-funcs versionator wxwidgets
 
 SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Gamecube and Wii game emulator"
 HOMEPAGE="https://www.dolphin-emu.org/"

@@ -1,6 +1,5 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit eutils
 
@@ -15,8 +14,8 @@ DEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/${PN} ${WORKDIR}/${P}
-	epatch ${FILESDIR}/${P}-fix.diff
+	mv "${WORKDIR}/${PN}" "${WORKDIR}/${P}"
+	epatch "${FILESDIR}"/${P}-fix.diff
 }
 
 src_compile() {

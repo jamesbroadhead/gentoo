@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( pypy3 python3_4 )
@@ -12,7 +11,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid yearly"
 
 RDEPEND=">=sys-apps/systemd-217

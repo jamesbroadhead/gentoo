@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=net-fs/samba-3.0.20[smbclient]"
+DEPEND=">=net-fs/samba-4.2[client]"
 RDEPEND="${DEPEND}"
 
 # tests are not designed to work on a non-developer system.

@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 POSTGRES_COMPAT=( 9.{0,1,2,3,4} )
@@ -38,7 +37,6 @@ DEPEND="
 
 # Needs a running psql instance, doesn't work out of the box
 RESTRICT="test"
-CMAKE_MIN_VERSION="2.8.8"
 
 postgres_check_slot() {
 	if ! declare -p POSTGRES_COMPAT &>/dev/null; then

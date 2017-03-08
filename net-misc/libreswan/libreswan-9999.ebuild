@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,7 +22,7 @@ IUSE="caps curl dnssec ldap pam systemd"
 
 COMMON_DEPEND="
 	dev-libs/gmp:0=
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	dev-libs/nspr
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )

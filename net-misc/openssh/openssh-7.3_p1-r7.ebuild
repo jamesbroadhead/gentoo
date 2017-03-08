@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -31,7 +30,7 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="bindist debug ${HPN_PATCH:++}hpn kerberos kernel_linux ldap ldns libedit libressl livecd pam +pie sctp selinux skey ssh1 +ssl static test X X509"
 REQUIRED_USE="ldns? ( ssl )
@@ -76,7 +75,7 @@ RDEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PARCH}
 
-pkg_setup() {
+pkg_pretend() {
 	# this sucks, but i'd rather have people unable to `emerge -u openssh`
 	# than not be able to log in to their server any more
 	maybe_fail() { [[ -z ${!2} ]] && echo "$1" ; }

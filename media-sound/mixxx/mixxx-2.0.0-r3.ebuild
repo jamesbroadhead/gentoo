@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -22,7 +21,7 @@ IUSE="aac debug doc ffmpeg hid mp3 mp4 shout wavpack"
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
 RDEPEND="dev-db/sqlite
-	dev-libs/protobuf
+	dev-libs/protobuf:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -70,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
 	"${DISTDIR}"/${P}-ffmpeg30.patch
 	"${DISTDIR}"/${P}-ffmpeg31.patch
+	"${FILESDIR}"/${P}-chromaprint-1.4.patch #604528
 )
 
 src_prepare() {

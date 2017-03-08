@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -46,7 +45,7 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="amd64 ~arm ~arm64 hppa x86"
+		KEYWORDS="amd64 arm ~arm64 hppa x86"
 	fi
 
 	SRC_URI="
@@ -58,7 +57,7 @@ fi
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
 IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mongodb mysql normalize omhttpfs"
-IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
+IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
 
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.2:=
@@ -82,7 +81,7 @@ RDEPEND="
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
-	redis? ( >=dev-libs/hiredis-0.11.0 )
+	redis? ( >=dev-libs/hiredis-0.11.0:= )
 	relp? ( >=dev-libs/librelp-1.2.5:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
@@ -92,6 +91,7 @@ RDEPEND="
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? ( >=net-libs/gnutls-2.12.23:0= )
 	systemd? ( >=sys-apps/systemd-208 )
+	uuid? ( sys-apps/util-linux:0= )
 	zeromq? (
 		>=net-libs/zeromq-4.1.1:=
 		>=net-libs/czmq-3.0.0
@@ -228,6 +228,7 @@ src_configure() {
 		$(use_enable systemd imjournal)
 		$(use_enable systemd omjournal)
 		$(use_enable usertools)
+		$(use_enable uuid)
 		$(use_enable zeromq imczmq)
 		$(use_enable zeromq imzmq3)
 		$(use_enable zeromq omczmq)

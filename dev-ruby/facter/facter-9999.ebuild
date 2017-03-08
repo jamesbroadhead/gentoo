@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 USE_RUBY="ruby21 ruby22"
@@ -19,20 +18,22 @@ SLOT="0"
 IUSE="debug test"
 KEYWORDS=""
 
-CDEPEND="
+BDEPEND="
 	>=sys-devel/gcc-4.8:*
 	>=dev-libs/boost-1.54[nls]
 	>=dev-libs/leatherman-0.9.3
 	>=dev-cpp/yaml-cpp-0.5.1
-	dev-cpp/cpp-hocon
+	dev-cpp/cpp-hocon"
+CDEPEND="
 	dev-libs/openssl:*
 	sys-apps/util-linux
 	app-emulation/virt-what
 	net-misc/curl
 	!<app-admin/puppet-4.0.0"
 
-RDEPEND+=" ${CDEPEND}"
-DEPEND+=" test? ( ${CDEPEND} )"
+RDEPEND="${CDEPEND}"
+DEPEND="${BDEPEND}
+	${CDEPEND}"
 
 src_prepare() {
 	pwd
@@ -64,8 +65,16 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile
+}
+
 each_ruby_install() {
 	doruby "${BUILD_DIR}"/lib/facter.rb
+}
+
+src_test() {
+	cmake-utils_src_test
 }
 
 src_install() {

@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
-inherit autotools eutils
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="Bluetooth Audio ALSA Backend"
 HOMEPAGE="https://github.com/Arkq/bluez-alsa"
@@ -20,17 +19,17 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="aac debug hcitop"
 
-RDEPEND=">=dev-libs/glib-2.16[dbus]
-	>=media-libs/alsa-lib-1.0
-	>=media-libs/sbc-1.2
-	>=net-wireless/bluez-5
+RDEPEND=">=dev-libs/glib-2.16[dbus,${MULTILIB_USEDEP}]
+	>=media-libs/alsa-lib-1.0[${MULTILIB_USEDEP}]
+	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
+	>=net-wireless/bluez-5[${MULTILIB_USEDEP}]
+	aac? ( >=media-libs/fdk-aac-0.1.1[${MULTILIB_USEDEP}] )
 	hcitop? (
 		dev-libs/libbsd
 		sys-libs/ncurses:0=
 	)"
 DEPEND="${RDEPEND}
 	net-libs/ortp
-	aac? ( >=media-libs/fdk-aac-0.1.1 )
 	virtual/pkgconfig"
 
 src_prepare() {
@@ -38,18 +37,20 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable aac) \
 		$(use_enable debug) \
-		$(use_enable hcitop)
+		$(multilib_native_use_enable hcitop)
 }
 
-src_install() {
+multilib_src_install_all() {
 	default
 	prune_libtool_files --modules
 
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
+	newconfd "${FILESDIR}"/bluealsa-conf.d bluealsa
 }
 
 pkg_postinst() {

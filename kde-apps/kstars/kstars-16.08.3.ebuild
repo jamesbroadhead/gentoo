@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -10,7 +9,7 @@ inherit kde5 python-single-r1
 
 DESCRIPTION="Desktop Planetarium"
 HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="fits indi wcs xplanet"
 
 # TODO: AstrometryNet requires new package
@@ -53,6 +52,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 "
+
+REQUIRED_USE="indi? ( fits )"
 
 src_configure() {
 	local mycmakeargs=(

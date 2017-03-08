@@ -1,12 +1,11 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit toolchain-funcs eutils versionator
 
 DESCRIPTION="Inputlirc daemon to utilize /dev/input/event*"
-HOMEPAGE="http://svn.sliepen.eu.org/inputlirc/trunk"
+HOMEPAGE="https://github.com/ferdinandhuebner/inputlirc"
 SRC_URI="http://gentooexperimental.org/~genstef/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"

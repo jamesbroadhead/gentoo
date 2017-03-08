@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -13,7 +12,7 @@ SRC_URI="http://docs.avagotech.com/docs-and-downloads/docs-and-downloads/raid-co
 
 LICENSE="Avago LSI BSD"
 SLOT="0/6.11"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND=""

@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
-DOC_PV="1.6.0"
+DOC_PV="2.0.0"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
@@ -15,7 +14,7 @@ SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${PV}/
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LANGS=" ca cs da de el es fr he hu it ja nl pl pt-BR pt-PT ru sk sl sq sv uk"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr gphoto2 graphicsmagick jpeg2k kde libsecret

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,7 +11,7 @@ HOMEPAGE="http://www.kde.org/applications/graphics/skanlite/"
 SRC_URI="mirror://kde/stable/${PN}/2.0/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 ) handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

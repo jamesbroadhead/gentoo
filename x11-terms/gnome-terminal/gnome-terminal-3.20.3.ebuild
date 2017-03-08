@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 GNOME2_LA_PUNT="yes"
@@ -13,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="debug +gnome-shell +nautilus vanilla"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 # FIXME: automagic dependency on gtk+[X]
 RDEPEND="

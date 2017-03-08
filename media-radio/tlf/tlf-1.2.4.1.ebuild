@@ -1,10 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit flag-o-matic multilib
+inherit autotools eutils flag-o-matic multilib
 
 DESCRIPTION="Console-mode amateur radio contest logger"
 HOMEPAGE="http://home.iae.nl/users/reinc/TLF-0.2.html"
@@ -12,7 +11,7 @@ SRC_URI="http://www.hs-mittweida.de/tb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses:=
@@ -21,6 +20,11 @@ RDEPEND="sys-libs/ncurses:=
 	media-sound/sox
 	dev-libs/xmlrpc-c[curl]"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/ncurses_tinfo.patch"
+	eautoreconf
+}
 
 src_configure() {
 	append-ldflags -L/usr/$(get_libdir)/hamlib

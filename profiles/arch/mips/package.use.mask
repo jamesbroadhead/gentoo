@@ -1,6 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
+# dev-python/gmpy fails tests about sizeof (conch), bug 608496
+# dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
+# dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
+dev-python/twisted conch crypt http2 soap test
 
 # Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
@@ -91,11 +96,7 @@ dev-libs/apr-util mysql
 # Stuart Longland <redhatter@gentoo.org> (07 Sep 2007)
 # mplayer not tested with these flags yet.  I may remove these slowly as I test
 # more functions of mplayer.
-media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca joystick live mad openal pnm pvr radio rar rtc svga tga xanim xinerama zoran
-
-# Gilles Dartiguelongue <eva@gentoo.org> (19 Oct 2007)
-# gdm depends on zenity which is not keyworded
->=gnome-base/gdm-2.20 remote
+media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca joystick live mad openal pnm pvr radio rar rtc tga xinerama zoran
 
 # Steve Dibb <beandog@gentoo.org> (01 Nov 2007)
 # needs media-libs/ladspa-sdk keyworded
@@ -112,12 +113,12 @@ app-portage/layman bazaar
 app-portage/layman darcs
 
 # deps missing keywords
-games-strategy/freeciv auth ggz
+games-strategy/freeciv auth
 
 # Mart Raudsepp <leio@gentoo.org> (27 Sept 2010)
 # Extra functionality that has external unkeyworded dependencies
 # and is not tested yet
-net-fs/samba ads cluster debug
+net-fs/samba ads cluster
 
 # Matt Turner <mattst88@gentoo.org> (06 Dec 2010)
 # dev-db/tokyocabinet not keyworded

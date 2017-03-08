@@ -1,10 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Library parsing abiword documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/${PN}"
@@ -41,13 +40,12 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--disable-werror \
-		$(use_enable static-libs static) \
-		$(use_with doc docs)
+		$(use_with doc docs) \
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

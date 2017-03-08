@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -72,7 +71,7 @@ pkg_setup() {
 
 src_prepare() {
 	if [ ${#PATCHES[0]} -ne 0 ]; then
-		epatch ${PATCHES[@]}
+		epatch "${PATCHES[@]}"
 	fi
 	eapply_user
 	# pids should go to /var/run/slurm

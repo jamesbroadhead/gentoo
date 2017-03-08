@@ -1,14 +1,11 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 GCONF_DEBUG="no"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
-
-CMAKE_MIN_VERSION="2.8.11.1"
 
 inherit gnome2 eutils flag-o-matic python-single-r1 cmake-utils
 

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -13,17 +12,19 @@ EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apache2 ldap mysql nginx postgres"
+IUSE="apache2 ldap mysql nginx pdf postgres"
 REQUIRED_USE="^^ ( apache2 nginx )"
 KEYWORDS=""
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
+		pdf? ( media-gfx/imagemagick[png] )
 		apache2? (
 			>=www-servers/apache-2.4.0
 			|| (
 				dev-lang/php:5.6[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
 				dev-lang/php:7.0[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
+				dev-lang/php:7.1[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
 			)
 		)
 		nginx? (
@@ -31,6 +32,7 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 			|| (
 				dev-lang/php:5.6[apache2?,cli,fpm,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
 				dev-lang/php:7.0[apache2?,cli,fpm,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
+				dev-lang/php:7.1[apache2?,cli,fpm,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
 			)
 		)"
 RDEPEND="${DEPEND}"
@@ -71,6 +73,7 @@ src_install() {
 	insinto "/usr/share/${PN}"
 	doins -r "${S}"/*
 	fperms -R a+rX "/usr/share/${PN}/public/"
+	fperms u+x,g+x "/usr/share/${PN}/bin/icingacli"
 }
 
 pkg_postinst() {

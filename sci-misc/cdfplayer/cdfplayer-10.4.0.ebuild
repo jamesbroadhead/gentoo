@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -41,6 +40,7 @@ RDEPEND="
 	dev-libs/icu
 	x11-libs/libxcb
 	dev-libs/libxml2
+	|| ( sys-libs/ncurses:5/5 sys-libs/ncurses:0/5 )
 "
 
 # we need this a few times

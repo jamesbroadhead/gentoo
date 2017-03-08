@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -15,12 +14,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="libyaml spell"
+IUSE="libyaml"
 
 RDEPEND="
 	>=dev-python/pyyaml-3.05[libyaml?,${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.16[${PYTHON_USEDEP}]
 	>=dev-python/pywebkitgtk-1.1.5[${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
-	spell? ( dev-python/pygtkspellcheck[${PYTHON_USEDEP}] )"
+	dev-python/chardet[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

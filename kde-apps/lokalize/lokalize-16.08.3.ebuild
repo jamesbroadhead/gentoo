@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ inherit python-single-r1 kde5
 DESCRIPTION="KDE Applications 5 translation tool"
 HOMEPAGE="https://www.kde.org/applications/development/lokalize
 http://l10n.kde.org/tools"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

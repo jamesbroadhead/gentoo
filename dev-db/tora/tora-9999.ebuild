@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -22,17 +21,19 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS=""
 
-DEPEND="
-	virtual/pkgconfig
+RDEPEND="
 	dev-libs/ferrisloki
-	x11-libs/qscintilla
+	x11-libs/qscintilla:=[qt4(-)]
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4[mysql?,postgres?]
 	dev-qt/qtxmlpatterns:4
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	virtual/pkgconfig
+	${RDEPEND}
+"
 
 pkg_setup() {
 	if ( use oracle || use oci8-instant-client ) && [ -z "$ORACLE_HOME" ] ; then

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -26,6 +25,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="tools? ( || ( qt4 qt5 ) )"
+
+src_prepare() {
+	sed -ri 's/(PIX_FMT_)/AV_\1/g' sherlock265/VideoDecoder.cc || die
+	autotools-multilib_src_prepare
+}
 
 src_configure() {
 	local myeconfargs=(

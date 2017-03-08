@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 )
@@ -122,7 +121,7 @@ RDEPEND="
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2
-	openvswitch? ( <=net-misc/openvswitch-2.5.9999 )
+	openvswitch? ( net-misc/openvswitch )
 	rabbitmq? ( net-misc/rabbitmq-server )
 	memcached? (
 		net-misc/memcached

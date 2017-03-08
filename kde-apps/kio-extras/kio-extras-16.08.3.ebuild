@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kio-extras"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="exif mtp openexr phonon samba +sftp slp"
 
 COMMON_DEPEND="
@@ -54,7 +53,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kded)
 	!<kde-apps/kcontrol-15.08.0-r1:4
-	!<kde-frameworks/kactivities-5.20.0
+	!<kde-frameworks/kactivities-5.20.0:5
 "
 DEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info

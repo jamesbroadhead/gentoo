@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE timer for making a fine cup of tea"
 HOMEPAGE="https://www.kde.org/applications/games/kteatime"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

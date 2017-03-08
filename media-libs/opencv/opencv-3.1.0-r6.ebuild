@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -149,7 +148,7 @@ src_configure() {
 		-DWITH_GSTREAMER=$(usex gstreamer)
 		-DWITH_GSTREAMER_0_10=OFF	# Don't want this
 		-DWITH_GTK=$(usex gtk)
-		-DWITH_GTK_2_X=OFF
+		-DWITH_GTK_2_X=$(usex gtk)
 		-DWITH_IPP=$(usex ipp)
 		-DWITH_JASPER=$(usex jpeg2k)
 		-DWITH_JPEG=$(usex jpeg)

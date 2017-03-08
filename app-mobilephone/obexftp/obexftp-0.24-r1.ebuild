@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,7 +12,7 @@ SRC_URI="mirror://sourceforge/openobex/${P}-Source.tar.gz"
 SLOT="0"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 hppa ~ppc ~x86"
+KEYWORDS="amd64 hppa ppc x86"
 
 # bluetooth support is not really optional, bug #529068
 IUSE="perl python ruby tcl" #bluetooth
@@ -23,7 +22,7 @@ RDEPEND="
 	net-wireless/bluez
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.0 dev-lang/ruby:1.9 ) )
+	ruby? ( dev-lang/ruby:2.1 )
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="

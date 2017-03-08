@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -13,7 +12,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/internet/konqueror/
 	https://konqueror.org/
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+bookmarks debug +filemanager svg"
 # 4 of 4 tests fail. Last checked for 4.0.3
 RESTRICT="test"

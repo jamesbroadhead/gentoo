@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit autotools eutils multilib flag-o-matic
@@ -11,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="cpu_flags_x86_3dnow alsa altivec css debug ieee1394 cpu_flags_x86_mmx opengl oss"
 
 RDEPEND="media-libs/a52dec:=

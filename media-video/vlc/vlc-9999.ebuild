@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 SCM=""
-if [ "${PV%9999}" != "${PV}" ] ; then
+if [[ ${PV} = *9999 ]] ; then
 	SCM="git-r3"
 
 	if [ "${PV%.9999}" != "${PV}" ] ; then
@@ -23,7 +22,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
-if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
+if [[ ${PV} = *9999 ]] ; then # Live ebuild
 	SRC_URI=""
 elif [[ "${MY_P}" == "${P}" ]]; then
 	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
@@ -47,10 +46,10 @@ IUSE="a52 aalib alsa altivec +audioqueue +avcodec
 	macosx-eyetv macosx-notifications macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack
 	ncurses neon ogg omxil opencv opengl optimisememory opus
-	png +postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
+	png postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
-	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zvbi zeroconf"
+	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi"
 
 RDEPEND="
 	dev-libs/libgpg-error:0
@@ -69,7 +68,7 @@ RDEPEND="
 		libav? ( media-video/libav:0= )
 	)
 	bidi? ( dev-libs/fribidi:0 )
-	bluray? ( >=media-libs/libbluray-0.6.2:0 )
+	bluray? ( >=media-libs/libbluray-0.6.2:0= )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 	chromecast? ( >=dev-libs/protobuf-2.5.0 )
@@ -90,10 +89,10 @@ RDEPEND="
 	gnutls? ( >=net-libs/gnutls-3.2.0:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.120.1:0 )
+	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( >=media-libs/libkate-0.3:0 )
-	libass? ( >=media-libs/libass-0.9.8:0 media-libs/fontconfig:1.0 )
+	libass? ( >=media-libs/libass-0.9.8:0= media-libs/fontconfig:1.0 )
 	libcaca? ( >=media-libs/libcaca-0.99_beta14:0 )
 	libnotify? ( x11-libs/libnotify:0 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 dev-libs/glib:2 )
 	libsamplerate? ( media-libs/libsamplerate:0 )
@@ -123,8 +122,8 @@ RDEPEND="
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
 	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
-	rdp? ( >=net-misc/freerdp-1.0.1:0= )
-	samba? ( || ( >=net-fs/samba-3.4.6:0[smbclient] >=net-fs/samba-4:0[client] ) )
+	rdp? ( =net-misc/freerdp-1*:0=[client] )
+	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
 		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
@@ -176,10 +175,11 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	!qt5? ( kde? ( kde-base/kdelibs:4 ) )
+	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
+	amd64? ( dev-lang/yasm:* )
+	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
 	app-arch/xz-utils:0
-	dev-lang/yasm:*
 	>=sys-devel/gettext-0.19.6:*
 	virtual/pkgconfig:*
 "
@@ -189,7 +189,7 @@ REQUIRED_USE="
 	bidi? ( truetype )
 	dvb? ( dvbpsi )
 	dxva2? ( avcodec )
-	ffmpeg? ( avcodec avformat swscale postproc )
+	ffmpeg? ( avcodec avformat swscale )
 	fontconfig? ( truetype )
 	gnutls? ( gcrypt )
 	httpd? ( lua )
@@ -199,8 +199,9 @@ REQUIRED_USE="
 	qt4? ( X )
 	qt5? ( X )
 	sdl? ( X )
-	skins? ( truetype X || ( qt4 qt5 ) )
+	skins? ( truetype X xml || ( qt4 qt5 ) )
 	vaapi? ( avcodec X )
+	vdpau? ( X )
 	vlm? ( encode )
 	xv? ( xcb )
 "
@@ -214,6 +215,9 @@ PATCHES=(
 
 	# Fix up broken audio when skipping using a fixed reversed bisected commit.
 	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
+
+	# Bug #593460
+	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -229,7 +233,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [ "${PV%9999}" != "${PV}" ] ; then
+	if [[ ${PV} = *9999 ]] ; then
 		git-r3_src_unpack
 	else
 		unpack ${A}
@@ -249,7 +253,7 @@ src_prepare() {
 	fi
 
 	# Bootstrap when we are on a git checkout.
-	if [[ "${PV%9999}" != "${PV}" ]] ; then
+	if [[ ${PV} = *9999 ]] ; then
 		./bootstrap
 	fi
 

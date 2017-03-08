@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -47,6 +46,8 @@ RDEPEND=">=dev-haskell/http-4000.2.4:=
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
+
+PATCHES=("${FILESDIR}"/${P}-noxpm.patch)
 
 src_prepare() {
 	default

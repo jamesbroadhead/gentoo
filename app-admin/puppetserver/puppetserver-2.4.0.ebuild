@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="puppetdb"
 # will need the same keywords as puppet
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND+="
 		>=virtual/jdk-1.7.0

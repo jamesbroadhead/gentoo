@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -28,7 +27,7 @@ CDEPEND="
 	dev-lang/perl
 	dev-libs/expat
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/netcdf
+	sci-libs/netcdf:0=
 	virtual/opengl
 	>=x11-libs/fltk-1.1.10-r2:1
 	x11-libs/libXft

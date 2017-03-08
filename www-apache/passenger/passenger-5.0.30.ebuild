@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
@@ -13,7 +12,7 @@ SRC_URI="http://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 ruby_add_bdepend "dev-ruby/rake"
@@ -43,6 +42,7 @@ pkg_setup() {
 
 all_ruby_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.0.20-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-5.1.1-isnan.patch
 
 	# Change these with sed instead of a patch so that we can easily use
 	# the toolchain-funcs methods.

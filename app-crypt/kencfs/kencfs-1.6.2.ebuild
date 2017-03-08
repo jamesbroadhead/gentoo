@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -18,7 +17,7 @@ IUSE=""
 DEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	kde-base/kdelibs:4
+	kde-frameworks/kdelibs:4
 "
 RDEPEND="${DEPEND}
 	kde-apps/kwalletd:4

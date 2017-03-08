@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -10,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Base library common to many KDE games"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="

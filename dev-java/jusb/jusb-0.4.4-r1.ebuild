@@ -1,6 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit eutils java-pkg-2 linux-info flag-o-matic multilib
 
@@ -40,9 +39,9 @@ src_unpack() {
 	# The struct usbdevfs_ctrltransfer is different
 	# in latest 2.4 and 2.6 kernels. This patch is
 	# to make jusb compile on 2.6 kernels
-	! kernel_is 2 4 && epatch ${FILESDIR}/${P}-native.patch
+	! kernel_is 2 4 && epatch "${FILESDIR}"/${P}-native.patch
 
-	epatch ${FILESDIR}/${P}-makefile.patch
+	epatch "${FILESDIR}"/${P}-makefile.patch
 
 	sed -i \
 		-e 's#-shared#-shared -Wl,-soname=libjusb.so#' \

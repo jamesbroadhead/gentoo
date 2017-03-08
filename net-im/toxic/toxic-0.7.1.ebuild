@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -14,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+X +av notifications"
 
 RDEPEND="
-	net-libs/tox[av?]
+	net-libs/tox:0/0.0[av?]
 	dev-libs/libconfig
 	media-gfx/qrencode
 	net-misc/curl

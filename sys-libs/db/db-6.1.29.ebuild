@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal versionator toolchain-funcs
@@ -134,7 +133,7 @@ multilib_src_configure() {
 	if use tcl || use test ; then
 		myconf+=(
 			--enable-tcl
-			--with-tcl=/usr/$(get_libdir)
+			--with-tcl="${EPREFIX}/usr/$(get_libdir)"
 		)
 	else
 		myconf+=(--disable-tcl )
@@ -169,9 +168,9 @@ multilib_src_install() {
 	db_src_install_usrlibcleanup
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_regso "${D}"/usr/"$(get_libdir)"/libdb_java*.so
-		java-pkg_dojar "${D}"/usr/"$(get_libdir)"/*.jar
-		rm -f "${D}"/usr/"$(get_libdir)"/*.jar
+		java-pkg_regso "${ED}"/usr/"$(get_libdir)"/libdb_java*.so
+		java-pkg_dojar "${ED}"/usr/"$(get_libdir)"/*.jar
+		rm -f "${ED}"/usr/"$(get_libdir)"/*.jar
 	fi
 }
 
@@ -182,9 +181,9 @@ multilib_src_install_all() {
 
 	dodir /usr/sbin
 	# This file is not always built, and no longer exists as of db-4.8
-	if [[ -f "${D}"/usr/bin/berkeley_db_svc ]] ; then
-		mv "${D}"/usr/bin/berkeley_db_svc \
-			"${D}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
+	if [[ -f "${ED}"/usr/bin/berkeley_db_svc ]] ; then
+		mv "${ED}"/usr/bin/berkeley_db_svc \
+			"${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
 	fi
 }
 

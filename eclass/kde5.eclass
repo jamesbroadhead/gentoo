@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
@@ -170,7 +169,7 @@ case ${KDE_AUTODEPS} in
 	false)	;;
 	*)
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
-		RDEPEND+=" >=kde-frameworks/kf-env-3"
+		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
@@ -238,11 +237,6 @@ unset COMMONDEPEND
 
 if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
-fi
-
-# FIXME: Drop this when kdepim-16.08.x is no more
-if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KMNAME} = kdepim ]]; then
-	S="${S}/${PN}"
 fi
 
 if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
@@ -720,11 +714,11 @@ kde5_pkg_postinst() {
 			einfo "Use it at your own risk."
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
 		fi
-		# for kf5-based applications tell user that he SHOULD NOT be using kde-base/plasma-workspace
+		# for kf5-based applications tell user that he SHOULD NOT be using kde-plasma/plasma-workspace:4
 		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
-				has_version 'kde-base/plasma-workspace'; then
+				has_version 'kde-plasma/plasma-workspace:4'; then
 			echo
-			ewarn "WARNING! Your system configuration still contains \"kde-base/plasma-workspace\","
+			ewarn "WARNING! Your system configuration still contains \"kde-plasma/plasma-workspace:4\","
 			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
 			ewarn "Please consider upgrading to Plasma 5."
 		fi
@@ -773,7 +767,9 @@ _l10n_variant_subdir_buster() {
 	esac
 
 	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
-		echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt
+		if [[ ${subdir##*/} != "cmake_modules" ]] ; then
+			echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt || die
+		fi
 	done
 }
 

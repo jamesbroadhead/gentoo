@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -15,18 +14,23 @@ EGIT_BRANCH="next"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
+IUSE="dbus debug examples gdal openmp qt5 test +udev +utils vim-syntax"
 
+# zlib is some strange auto-dep from simgear
+# TODO openmp
 COMMON_DEPEND="
 	dev-db/sqlite:3
 	>=dev-games/openscenegraph-3.2.0[png]
 	~dev-games/simgear-${PV}
 	media-libs/openal
-	media-libs/speex
+	>=media-libs/speex-1.2.0:0
+	media-libs/speexdsp:0
 	media-sound/gsm
 	sys-libs/zlib
+	virtual/glu
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
+	gdal? ( >=sci-libs/gdal-2.0.0:0 )
 	qt5? (
 		>=dev-qt/qtcore-5.4.1:5
 		>=dev-qt/qtgui-5.4.1:5
@@ -35,13 +39,21 @@ COMMON_DEPEND="
 	udev? ( virtual/udev )
 	utils? (
 		media-libs/freeglut
+		media-libs/freetype:2
+		media-libs/glew:0
 		media-libs/libpng:0
 		virtual/opengl
+		qt5? ( >=dev-qt/qtwebsockets-5.4.1:5 )
 	)
 "
+# libXi and libXmu are build-only-deps according to FindGLUT.cmake
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	utils? (
+		x11-libs/libXi
+		x11-libs/libXmu
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
@@ -51,29 +63,34 @@ DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_DEMCONVERT=$(usex gdal && usex utils)
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
+		-DENABLE_FGQCANVAS=$(usex qt5 && usex utils)
 		-DENABLE_FGVIEWER=$(usex utils)
 		-DENABLE_FLITE=OFF
+		-DENABLE_GDAL=$(usex gdal)
 		-DENABLE_GPSSMOOTH=$(usex utils)
 		-DENABLE_JS_DEMO=$(usex utils)
 		-DENABLE_JSBSIM=ON
 		-DENABLE_LARCSIM=ON
 		-DENABLE_LOGGING=$(usex test)
 		-DENABLE_METAR=$(usex utils)
+		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TESTS=$(usex test)
+		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
+		-DFG_BUILD_TYPE=Dev
 		-DFG_DATA_DIR=/usr/share/${PN}
 		-DJSBSIM_TERRAIN=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
-		-DSIMGEAR_SHARED=ON
 		-DSP_FDMS=ON
 		-DSYSTEM_FLITE=ON
 		-DSYSTEM_HTS_ENGINE=ON

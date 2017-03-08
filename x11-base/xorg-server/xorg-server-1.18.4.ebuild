@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,7 +9,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/xorg/xserver"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 IUSE_SERVERS="dmx kdrive xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} glamor ipv6 libressl minimal selinux +suid systemd tslib +udev unwind wayland"
@@ -18,7 +17,6 @@ IUSE="${IUSE_SERVERS} glamor ipv6 libressl minimal selinux +suid systemd tslib +
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl )
-	media-libs/freetype
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
@@ -64,6 +62,9 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
 	)
+	xnest? (
+		x11-libs/xcb-util-keysyms
+	)
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
@@ -107,6 +108,7 @@ DEPEND="${CDEPEND}
 	>=x11-proto/xineramaproto-1.1.3
 	>=x11-proto/xproto-7.0.28
 	>=x11-proto/presentproto-1.0
+	>=x11-proto/dri2proto-2.8
 	>=x11-proto/dri3proto-1.0
 	dmx? (
 		>=x11-proto/dmxproto-2.2.99.1
@@ -120,7 +122,6 @@ DEPEND="${CDEPEND}
 	)
 	!minimal? (
 		>=x11-proto/xf86driproto-2.1.0
-		>=x11-proto/dri2proto-2.8
 	)"
 
 RDEPEND="${CDEPEND}
@@ -145,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12-unloadsubmodule.patch
 	# needed for new eselect-opengl, bug #541232
 	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
+	"${FILESDIR}"/${PN}-1.18-sysmacros.patch #580044
 )
 
 pkg_pretend() {

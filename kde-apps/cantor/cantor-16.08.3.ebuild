@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,14 +11,14 @@ inherit kde5 python-r1
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://www.kde.org/applications/education/cantor https://edu.kde.org/cantor"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="analitza lua postscript python qalculate +R"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # TODO Add Sage Mathematics Software backend (http://www.sagemath.org)
 # FIXME: $(python_gen_cond_dep 'dev-qt/qtdbus:5' 'python3*')
-RDEPEND="
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -28,6 +27,7 @@ RDEPEND="
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdelibs4support)
 	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep kparts)
@@ -36,6 +36,7 @@ RDEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtgui)
+	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
@@ -50,11 +51,23 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
 "
-DEPEND="${RDEPEND}
-	>=dev-cpp/eigen-2.0.3:2
-"
+REPEND="${DEPEND}"
 
-RESTRICT="test"
+RESTRICT+=" test"
+
+pkg_pretend() {
+	kde5_pkg_pretend
+
+	if ! has_version sci-mathematics/maxima && ! has_version sci-mathematics/octave && \
+		! use analitza && ! use lua && ! use python && ! use qalculate && ! use R; then
+		einfo "You have decided to build ${PN} with no backend."
+		einfo "To have this application functional, please enable one of the backends via USE flag:"
+		einfo "    analitza, lua, python, qalculate, R"
+		einfo "Alternatively, install one of these:"
+		einfo "    # emerge sci-mathematics/maxima"
+		einfo "    # emerge sci-mathematics/octave"
+	fi
+}
 
 pkg_setup() {
 	use python && python_setup
@@ -79,17 +92,4 @@ src_configure() {
 		$(cmake-utils_use_find_package R R)
 	)
 	kde5_src_configure
-}
-
-pkg_postinst() {
-	kde5_pkg_postinst
-
-	if ! use analitza && ! use lua && ! use python && ! use qalculate && ! use R; then
-		echo
-		ewarn "You have decided to build ${PN} with no backend."
-		ewarn "To have this application functional, please do one of below:"
-		ewarn "    # emerge -va1 '='${CATEGORY}/${P} with 'analitza', 'lua', 'python', 'qalculate' or 'R' USE flag enabled"
-		ewarn "    # emerge -vaDu sci-mathematics/maxima"
-		echo
-	fi
 }

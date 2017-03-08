@@ -1,10 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.2"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
@@ -158,7 +156,7 @@ src_install() {
 	# en_EN can be deleted always
 	for lang in ${IUSE_LINGUAS}; do
 		if ! use linguas_${lang}; then
-			_lang=$(translate_lang)
+			_lang=$(translate_lang ${lang})
 			safe_delete "${ED%/}"/usr/share/man/${_lang}
 		fi
 	done
@@ -206,8 +204,6 @@ safe_delete () {
 			ebegin "Deleting ${x}"
 			rm "${x}" || die
 			eend $?
-		else
-			ewarn "${x} not found"
 		fi
 	done
 }

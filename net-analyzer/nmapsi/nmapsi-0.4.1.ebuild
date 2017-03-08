@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -24,7 +23,7 @@ DEPEND="
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	dev-qt/qtwebkit:4
-	kde? ( kde-base/kdelibs:4 )
+	kde? ( kde-frameworks/kdelibs:4 )
 "
 RDEPEND="${DEPEND}
 	>=net-analyzer/nmap-6.00

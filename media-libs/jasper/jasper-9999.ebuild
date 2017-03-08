@@ -1,10 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit cmake-multilib
 
 DESCRIPTION="Implementation of the codec specified in the JPEG-2000 Part-1 standard"
 HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
@@ -24,36 +23,43 @@ fi
 : ${JASPER_MEM_LIMIT:=134217728}
 
 LICENSE="JasPer2.0"
-SLOT="0/1"
-IUSE="jpeg opengl static-libs"
+SLOT="0"
+IUSE="doc jpeg opengl"
 
 RDEPEND="
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	opengl? (
 		>=virtual/opengl-7.0-r1:0[${MULTILIB_USEDEP}]
 		>=media-libs/freeglut-2.8.1:0[${MULTILIB_USEDEP}]
-		virtual/glu
+		virtual/glu[${MULTILIB_USEDEP}]
+		x11-libs/libXi[${MULTILIB_USEDEP}]
+		x11-libs/libXmu[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
-
-src_prepare() {
-	default
-	eautoreconf
-}
+	doc? ( app-doc/doxygen )"
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable jpeg libjpeg) \
-		$(use_enable opengl) \
-		$(use_enable static-libs static) \
-		--enable-memory-limit="${JASPER_MEM_LIMIT}"
-}
+	local mycmakeargs=(
+		-DALLOW_IN_SOURCE_BUILD=OFF
+		-DBASH_PROGRAM="${EPREFIX}"/bin/bash
+		-DJAS_ENABLE_ASAN=OFF
+		-DJAS_ENABLE_LSAN=OFF
+		-DJAS_ENABLE_MSAN=OFF
+		-DJAS_ENABLE_SHARED=ON
+		-DJAS_ENABLE_STRICT=ON
+		-DJAS_ENABLE_USAN=OFF
+		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
-multilib_src_install_all() {
-	einstalldocs
-	dodoc -r doc/.
+		# JPEG
+		-DJAS_ENABLE_LIBJPEG=$(usex jpeg)
+		-DCMAKE_DISABLE_FIND_PACKAGE_JPEG=$(usex !jpeg)
 
-	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+		# OpenGL
+		-DJAS_ENABLE_OPENGL=$(usex opengl)
+		-DCMAKE_DISABLE_FIND_PACKAGE_OpenGL=$(usex !opengl)
+
+		# Doxygen
+		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
+	)
+	cmake-utils_src_configure
 }

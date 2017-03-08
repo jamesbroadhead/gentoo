@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit autotools eutils multilib versionator
@@ -33,6 +32,8 @@ RDEPEND=">=sci-libs/fftw-3.0.1
 DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${PN}-${MY_PV}"
+
+REQUIRED_USE="jack? ( audacious )"
 
 src_prepare() {
 	eautoreconf

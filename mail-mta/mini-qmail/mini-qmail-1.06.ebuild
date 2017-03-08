@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 GENQMAIL_PV=20080406
 
@@ -17,7 +16,7 @@ SRC_URI="mirror://qmail/netqmail-${PV}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~mips ~ppc x86"
+KEYWORDS="amd64 arm hppa ~mips ppc x86"
 IUSE=""
 
 DEPEND=""

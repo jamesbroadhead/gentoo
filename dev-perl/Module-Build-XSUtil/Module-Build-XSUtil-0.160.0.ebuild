@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Module::Build class for building XS modules"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 hppa ~ppc ~x86"
 IUSE="test examples"
 # File::Basename -> perl
 RDEPEND="

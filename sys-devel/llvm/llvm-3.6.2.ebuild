@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -31,7 +30,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	arm64? ( LLVM-Grant )
 	multitarget? ( LLVM-Grant )"
 SLOT="0/3.6"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug doc gold libedit +libffi multitarget ncurses ocaml python
 	+static-analyzer test xml video_cards_radeon
 	kernel_Darwin kernel_FreeBSD"
@@ -176,7 +175,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		epatch "${FILESDIR}"/3.7.1/clang/gentoo-install.patch
-		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		# Fix build fails with using gcc-4.9 on Gentoo/FreeBSD, bug #548444

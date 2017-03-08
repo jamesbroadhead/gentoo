@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,13 +12,15 @@ SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/mozilla/gmp-api/archive/Firefox${MOZVER}.tar.gz -> gmp-api-Firefox${MOZVER}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha amd64 arm hppa ppc ppc64 x86"
 IUSE="+plugin utils"
 
 RESTRICT="bindist"
 
 RDEPEND="!<www-client/firefox-${MOZVER}"
-DEPEND="dev-lang/nasm"
+DEPEND="
+	abi_x86_32? ( dev-lang/nasm )
+	abi_x86_64? ( dev-lang/nasm )"
 
 DOCS=( LICENSE CONTRIBUTORS README.md )
 

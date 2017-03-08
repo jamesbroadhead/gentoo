@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,14 +11,14 @@ SRC_URI="mirror://gnu/plotutils/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ~ia64 ppc ~ppc64 ~s390 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+png static-libs X"
 
 DEPEND="
 	!<media-libs/plotutils-${PV}
 	media-libs/libxmi
 	png? (
-		media-libs/libpng
+		media-libs/libpng:0=
 		sys-libs/zlib )
 	X? (
 		x11-libs/libXaw
@@ -35,7 +34,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-2.5.1-rangecheck.patch \
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${P}-libpng-1.5.patch \
-		"${FILESDIR}"/${P}-libxmi.patch
+		"${FILESDIR}"/${P}-libxmi.patch \
+		"${FILESDIR}"/${P}-format-security.patch
 	eautoreconf
 	elibtoolize
 }

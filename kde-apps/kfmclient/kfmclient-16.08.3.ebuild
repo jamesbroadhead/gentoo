@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,7 +8,7 @@ KMMODULE="konqueror/client"
 inherit kde4-meta
 
 DESCRIPTION="KDE tool for opening URLs from the command line"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 KMEXTRACTONLY="

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,7 +11,7 @@ SRC_URI="http://mosh.mit.edu/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~mips ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
 IUSE="+client examples +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="

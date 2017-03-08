@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -35,5 +34,7 @@ python_prepare_all() {
 }
 
 python_test() {
+	# https://github.com/jaraco/path.py/issues/122
+	unset XDG_CONFIG_HOME
 	esetup.py test
 }

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -52,7 +51,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if use X && !has_version 'x11-base/xorg-server[wayland]'
+	if use X && ! has_version 'x11-base/xorg-server[wayland]'
 	then
 		elog "You have enabled wlc's X11 support. To use Xwayland, you must emerge"
 		elog "'x11-base/xorg-server[wayland]'."

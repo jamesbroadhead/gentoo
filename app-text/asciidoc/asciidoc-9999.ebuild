@@ -1,23 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 pypy )
 
-[ "$PV" == "9999" ] && inherit mercurial autotools
-inherit readme.gentoo python-single-r1
+[ "$PV" == "9999" ] && inherit git-r3 autotools
+inherit readme.gentoo-r1 python-single-r1
 
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://www.methods.co.nz/asciidoc/"
 if [ "$PV" == "9999" ]; then
-	EHG_REPO_URI="https://asciidoc.googlecode.com/hg/"
+	EGIT_REPO_URI="https://github.com/asciidoc/asciidoc.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -52,12 +51,13 @@ REQUISITES for a list of runtime dependencies.
 
 if [ "$PV" == "9999" ]; then
 	DEPEND="${DEPEND}
-		dev-util/aap
 		www-client/lynx
 		dev-util/source-highlight"
 fi
 
 src_prepare() {
+	default
+
 	# Only needed for prefix - harmless (does nothing) otherwise
 	sed -i -e "s:^CONF_DIR=.*:CONF_DIR='${EPREFIX}/etc/asciidoc':" \
 		"${S}/asciidoc.py" || die
@@ -73,8 +73,12 @@ src_compile() {
 	default
 
 	if [ "$PV" == "9999" ]; then
-		cd doc || die
-		aap -f main.aap ../{CHANGELOG,README,BUGS} || die
+		# replicate build rules from doc/main.aap; this avoids a dependency on
+		# the A-A-P build tool
+		for f in CHANGELOG.txt BUGS.txt README.asciidoc; do
+			${PYTHON} asciidoc.py -f text.conf -n -b html4 -o - "$f" | \
+				lynx -dump -stdin > "${f%.*}" || die
+		done
 	fi
 }
 
@@ -98,8 +102,11 @@ src_install() {
 }
 
 src_test() {
-	cd tests || die
-	local -x ASCIIDOC_PY=../asciidoc.py
-	"${PYTHON}" test${PN}.py update || die
-	"${PYTHON}" test${PN}.py run || die
+	local -x ASCIIDOC_PY=asciidoc.py
+	"${PYTHON}" tests/test${PN}.py update || die
+	"${PYTHON}" tests/test${PN}.py run || die
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

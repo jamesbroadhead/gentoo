@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # To generate the man pages, unpack the upstream tarball and run:
 # ./configure --enable-install-program=arch,coreutils,hostname,kill
@@ -13,7 +12,7 @@ EAPI="4"
 inherit eutils flag-o-matic toolchain-funcs
 
 PATCH_VER="1.1"
-DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
+DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
@@ -23,7 +22,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="acl caps gmp hostname kill multicall nls selinux static userland_BSD vanilla xattr"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )

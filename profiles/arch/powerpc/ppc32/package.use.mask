@@ -1,8 +1,23 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # This file requires >=portage-2.1.1
+
+# Bernard Cafarelli <voyageur@gentoo.org> <25 Jan 2017)
+# Requires a Java dependency
+app-text/tesseract scrollview
+
+# Davide Pesavento <pesa@gentoo.org> (21 Jan 2017)
+# Requires unkeyworded dev-python/PyQt5
+dev-python/qscintilla-python qt5
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (13 Dec 2016)
+# Dropping ppc from sci-libs/armadillo, bug 555896
+sci-libs/gdal armadillo
+
+## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
+# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
+>=sci-libs/gdal-2.0.3 mdb
 
 # Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
 # libomp does not support 32-bit PPC, #600148.
@@ -27,15 +42,9 @@ sci-astronomy/stellarium sound
 # minor arches and has been declared deprecated by upstream. So we'd like
 # to avoid keywording it, unless requested by users.
 app-office/texmaker qt5
-app-text/kchmviewer qt5
 dev-qt/designer webkit
 net-irc/quassel webkit
 kde-plasma/libksysguard detailedmemory
-
-# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
-media-video/mpv uchardet
 
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.

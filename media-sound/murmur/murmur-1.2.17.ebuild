@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,12 +8,12 @@ inherit eutils qmake-utils systemd user readme.gentoo-r1
 MY_P="mumble-${PV/_/~}"
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
-HOMEPAGE="http://mumble.sourceforge.net/"
-SRC_URI="http://mumble.info/snapshot/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.mumble.info"
+SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND=">=dev-libs/openssl-1.0.0b:0=

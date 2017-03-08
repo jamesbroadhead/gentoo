@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -25,7 +24,7 @@ DEPEND="${DEPEND}
 	libnotify? (
 		gtk?  ( x11-libs/libnotify )
 		gtk3? ( x11-libs/libnotify )
-		qt4?  ( kde-base/kdelibs )
+		qt4?  ( kde-frameworks/kdelibs:4 )
 	)
 	gtk?  ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )

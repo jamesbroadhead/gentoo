@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
@@ -270,7 +269,7 @@ setup_modules() {
 	fi
 
 	if use ssl ; then
-		MY_CONF+=( --with-ssl="${EPREFIX}"/usr --enable-ssl=${mod_type} )
+		MY_CONF+=( --with-ssl --enable-ssl=${mod_type} )
 		MY_MODS+=( ssl )
 	else
 		MY_CONF+=( --without-ssl --disable-ssl )

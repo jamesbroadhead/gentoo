@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -14,8 +13,8 @@ SRC_URI="http://git.netfilter.org/${PN}2/snapshot/${COMMIT_ID}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
-IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite -ulog"
+KEYWORDS="amd64 ~ia64 ppc x86"
+IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite ulog"
 
 RDEPEND="
 	|| ( net-firewall/iptables net-firewall/nftables )

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -16,7 +15,7 @@ HOMEPAGE="https://mpv.io/"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha ~amd64 ~arm hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 ~sparc x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="git://github.com/mpv-player/mpv.git"
@@ -28,9 +27,9 @@ DOCS+=( README.md )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
+IUSE="+alsa aqua archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
 	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
 	selinux test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
 	+xscreensaver +xv zsh-completion"
 
@@ -43,6 +42,7 @@ REQUIRED_USE="
 	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
+	test? ( || ( opengl egl ) )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
@@ -73,7 +73,7 @@ COMMON_DEPEND="
 		virtual/libiconv
 		enca? ( app-i18n/enca )
 		libguess? ( >=app-i18n/libguess-1.0 )
-		uchardet? ( dev-libs/uchardet )
+		uchardet? ( app-i18n/uchardet )
 	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
@@ -121,6 +121,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	v4l? ( virtual/os-headers )
 "
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )

@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
@@ -319,12 +318,10 @@ mysql-multilib-r1_src_prepare() {
 	if in_iuse tokudb ; then
 		# Don't build bundled xz-utils
 		if [[ -d "${S}/storage/tokudb/ft-index" ]] ; then
-			rm -f "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
-			touch "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
+			echo > "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
 			sed -i 's/ build_lzma//' "${S}/storage/tokudb/ft-index/ft/CMakeLists.txt" || die
 		elif [[ -d "${S}/storage/tokudb/PerconaFT" ]] ; then
-			rm "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
-			touch "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
+			echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
 			sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
 			sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 		fi
@@ -338,6 +335,11 @@ mysql-multilib-r1_src_prepare() {
 	# There is no CMake flag, it simply checks for existance
 	if [[ -d "${S}"/storage/mroonga/vendor/groonga ]] ; then
 		rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
+	fi
+
+	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
+	if [[ -d "${S}/support-files/SELinux" ]] ; then
+		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
 	if [[ "${EAPI}x" == "5x" ]] ; then
@@ -782,7 +784,7 @@ mysql-multilib-r1_pkg_config() {
 	mysql_init_vars
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
-	if ! built_with_use ${CATEGORY}/${PN} server ; then
+	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 
@@ -939,19 +941,19 @@ mysql-multilib-r1_pkg_config() {
         if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && version_is_at_least "5.7.6" ; then
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
-		cmd="${EROOT}usr/sbin/mysqld"
+		cmd=( "${EROOT}usr/sbin/mysqld" )
 		initialize_options="--initialize-insecure  '--init-file=${sqltmp}'"
 		sqltmp="" # the initialize will take care of it
 	else
-		cmd="${EROOT}usr/share/mysql/scripts/mysql_install_db"
-		[[ -f "${cmd}" ]] || cmd="${EROOT}usr/bin/mysql_install_db"
+		cmd=( "${EROOT}usr/share/mysql/scripts/mysql_install_db" )
+		[[ -f "${cmd}" ]] || cmd=( "${EROOT}usr/bin/mysql_install_db" )
 		if [[ -r "${help_tables}" ]] ; then
 			cat "${help_tables}" >> "${sqltmp}"
 		fi
 	fi
-	cmd="'$cmd' '--basedir=${EPREFIX}/usr' ${options} '--datadir=${ROOT}/${MY_DATADIR}' '--tmpdir=${ROOT}/${MYSQL_TMPDIR}' ${initialize_options}"
-	einfo "Command: $cmd"
-	eval $cmd \
+	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}/${MY_DATADIR}" "--tmpdir=${ROOT}/${MYSQL_TMPDIR}" ${initialize_options} )
+	einfo "Command: ${cmd[*]}"
+	"${cmd[@]}" \
 		>"${TMPDIR}"/mysql_install_db.log 2>&1
 	if [ $? -ne 0 ]; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2

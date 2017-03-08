@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -101,9 +100,9 @@ multilib_src_test() {
 src_test() {
 	cmake-multilib_src_test
 	if use perl; then
-		cd contrib/perl || die
-		# SRC_TEST=do
 		# Perl tests fail due to missing POD coverage...
+		perl_rm_files "contrib/perl/t/pod.t" "contrib/perl/t/pod-coverage.t"
+		cd contrib/perl || die
 		perl-module_src_test
 	fi
 }

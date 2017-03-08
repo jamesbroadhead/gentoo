@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
@@ -18,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND=">=media-libs/lv2-1.8.1
-	>=dev-libs/serd-0.14.0
+	>=dev-libs/serd-0.23.0
 	>=dev-libs/sord-0.12.0"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}

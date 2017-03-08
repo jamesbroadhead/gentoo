@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Educational application to learn calculating with fractions"
 HOMEPAGE="https://www.kde.org/applications/education/kbruch https://edu.kde.org/kbruch"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -29,7 +28,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST="do parallel"
+SRC_TEST="do"
+# tests fail when done in parallel
 
 src_test() {
 	perl_rm_files t/02-kwalitee.t t/02-pod-coverage.t t/02-pod.t

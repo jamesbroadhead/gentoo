@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 USE_RUBY="ruby20 ruby21"
@@ -17,7 +16,7 @@ HOMEPAGE="http://kramdown.rubyforge.org/"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="latex"
 
 LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -27,7 +26,7 @@ DEPEND="
 	kde-apps/akonadi:4
 	media-libs/phonon[qt4]
 	x11-misc/shared-mime-info
-	prison? ( media-libs/prison:4 )
+	prison? ( kde-frameworks/prison:4 )
 	ldap? ( net-nds/openldap )
 "
 # boost is not linked to, but headers which include it are installed

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -14,7 +13,7 @@ SRC_URI="http://www.ra.cs.uni-tuebingen.de/downloads/SNNS/${MY_P}.tar.gz
 	doc? ( http://www.ra.cs.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf )"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 IUSE="X doc python"
 

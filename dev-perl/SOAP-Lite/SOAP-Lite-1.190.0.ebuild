@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,7 +11,7 @@ DESCRIPTION="Lightweight interface to the SOAP protocol both on client and serve
 
 IUSE="ssl test xmpp"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 myconf="${myconf} --noprompt"
 

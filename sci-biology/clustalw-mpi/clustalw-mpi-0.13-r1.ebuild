@@ -1,12 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A parallel (MPI) implemention of the Clustal-W general purpose multiple alignment algorithm"
+DESCRIPTION="An MPI implemention of the ClustalW general purpose multiple alignment algorithm"
 HOMEPAGE="http://www.bii.a-star.edu.sg/achievements/applications/clustalw/index.php"
 SRC_URI="http://web.bii.a-star.edu.sg/~kuobin/${PN}/${P}.tar.gz"
 

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -20,7 +19,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="audit debug ncurses pam newnet prefix +netifrc selinux static-libs
-	tools unicode kernel_linux kernel_FreeBSD"
+	unicode kernel_linux kernel_FreeBSD"
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -28,7 +27,6 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 		sys-auth/pambase
 		virtual/pam
 	)
-	tools? ( dev-lang/perl )
 	audit? ( sys-process/audit )
 	kernel_linux? (
 		sys-process/psmisc
@@ -45,7 +43,10 @@ DEPEND="${COMMON_DEPEND}
 	ncurses? ( virtual/pkgconfig )"
 RDEPEND="${COMMON_DEPEND}
 	!prefix? (
-		kernel_linux? ( >=sys-apps/sysvinit-2.86-r6 )
+		kernel_linux? (
+			>=sys-apps/sysvinit-2.86-r6[selinux?]
+			virtual/tmpfiles
+		)
 		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
 	)
 	selinux? (
@@ -57,15 +58,14 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
 src_prepare() {
+	default
+
 	sed -i 's:0444:0644:' mk/sys.mk || die
 
 	if [[ ${PV} == "9999" ]] ; then
 		local ver="git-${EGIT_VERSION:0:6}"
 		sed -i "/^GITVER[[:space:]]*=/s:=.*:=${ver}:" mk/gitver.mk || die
 	fi
-
-	# Allow user patches to be applied without modifying the ebuild
-	eapply_user
 }
 
 src_compile() {
@@ -78,8 +78,7 @@ src_compile() {
 		MKSELINUX=$(usex selinux)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)
-		MKTOOLS=$(usex tools)"
+		MKSTATICLIBS=$(usex static-libs)"
 
 	local brand="Unknown"
 	if use kernel_linux ; then

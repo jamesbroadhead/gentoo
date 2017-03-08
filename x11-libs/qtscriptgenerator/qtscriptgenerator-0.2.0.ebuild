@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
@@ -10,7 +9,7 @@ MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Tool for generating Qt bindings for Qt Script"
 HOMEPAGE="https://code.google.com/p/qtscriptgenerator/"
-SRC_URI="https://qtscriptgenerator.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~johu/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5} )
@@ -66,6 +65,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	optfeature "PDF display support" www-plugins/pdfjs
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 }

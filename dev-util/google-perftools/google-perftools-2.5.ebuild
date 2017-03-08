@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,7 +9,7 @@ MY_P="gperftools-${PV}"
 inherit toolchain-funcs eutils flag-o-matic vcs-snapshot autotools-multilib
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
-HOMEPAGE="http://code.google.com/p/gperftools/"
+HOMEPAGE="https://github.com/gperftools/gperftools"
 SRC_URI="https://github.com/gperftools/gperftools/tarball/${MY_P} -> ${MY_P}.tar.gz"
 
 LICENSE="MIT"

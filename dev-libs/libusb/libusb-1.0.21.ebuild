@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs multilib-minimal
@@ -29,8 +28,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	# Bug 573802
-	emake -j1
+	emake
 
 	if multilib_is_native_abi; then
 		use doc && emake -C doc docs

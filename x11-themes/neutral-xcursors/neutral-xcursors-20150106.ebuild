@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -39,7 +38,7 @@ SRC_URI="
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="x11-apps/xcursorgen"

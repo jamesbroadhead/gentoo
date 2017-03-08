@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -44,6 +43,10 @@ DEPEND="${RDEPEND}
 	x11-proto/dri3proto
 	x11-proto/presentproto
 	x11-proto/resourceproto"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.99.917-config-header.patch #575970
+)
 
 src_configure() {
 	replace-flags -Os -O2

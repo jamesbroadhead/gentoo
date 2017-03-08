@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -21,21 +20,21 @@ MY_P="${P/_/-}"
 FOLDER="${PV/_rc*/}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
-HOMEPAGE="http://mesa3d.sourceforge.net/"
+HOMEPAGE="https://www.mesa3d.org/"
 
 if [[ $PV == 9999 ]]; then
 	SRC_URI=""
-	KEYWORDS="alpha amd64 hppa ia64 ppc x86"
+	KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
-	KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 RESTRICT="!bindist? ( bindist )"
 
-INTEL_CARDS="i915 i965 ilo intel"
+INTEL_CARDS="i915 i965 intel"
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
 VIDEO_CARDS="${INTEL_CARDS} ${RADEON_CARDS} freedreno nouveau vc4 vmware"
 for card in ${VIDEO_CARDS}; do
@@ -62,7 +61,6 @@ REQUIRED_USE="
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
 	video_cards_i965?   ( classic )
-	video_cards_ilo?    ( gallium )
 	video_cards_nouveau? ( || ( classic gallium ) )
 	video_cards_radeon? ( || ( classic gallium )
 						  gallium? ( x86? ( llvm ) amd64? ( llvm ) ) )
@@ -240,7 +238,6 @@ multilib_src_configure() {
 		gallium_enable video_cards_vmware svga
 		gallium_enable video_cards_nouveau nouveau
 		gallium_enable video_cards_i915 i915
-		gallium_enable video_cards_ilo ilo
 		if ! use video_cards_i915 && \
 			! use video_cards_i965; then
 			gallium_enable video_cards_intel i915

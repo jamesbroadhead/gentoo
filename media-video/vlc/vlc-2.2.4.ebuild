@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -35,7 +34,7 @@ LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
 if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="amd64 ~arm ~ppc ppc64 -sparc x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ppc ppc64 -sparc x86 ~x86-fbsd"
 fi
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
@@ -90,10 +89,10 @@ RDEPEND="
 	gnome? ( gnome-base/gnome-vfs:2 dev-libs/glib:2 )
 	gnutls? ( >=net-libs/gnutls-3.0.20:0 )
 	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
+	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( >=media-libs/libkate-0.3:0 )
-	libass? ( >=media-libs/libass-0.9.8:0 media-libs/fontconfig:1.0 )
+	libass? ( >=media-libs/libass-0.9.8:0= media-libs/fontconfig:1.0 )
 	libcaca? ( >=media-libs/libcaca-0.99_beta14:0 )
 	libnotify? ( x11-libs/libnotify:0 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 dev-libs/glib:2 )
 	libsamplerate? ( media-libs/libsamplerate:0 )
@@ -124,8 +123,7 @@ RDEPEND="
 	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 	rdp? ( >=net-misc/freerdp-1.0.1:0=[client] <net-misc/freerdp-2 )
-	samba? ( || ( ( >=net-fs/samba-3.4.6:0[smbclient] <net-fs/samba-4.0.0_alpha1:0[smbclient] )
-		>=net-fs/samba-4.0.0_alpha1:0[client] ) )
+	samba? ( >=net-fs/samba-4.0.0_alpha1:0[client] )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl? ( >=media-libs/libsdl-1.2.10:0
 		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
@@ -179,7 +177,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	!qt5? ( kde? ( kde-base/kdelibs:4 ) )
+	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	xcb? ( x11-proto/xproto:0 )
 	app-arch/xz-utils:0
 	x86?   ( dev-lang/yasm:* )

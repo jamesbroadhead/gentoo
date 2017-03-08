@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=4
 
@@ -17,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc static-libs test"
 
-RDEPEND=">=dev-libs/serd-0.14.0"
+RDEPEND=">=dev-libs/serd-0.22.4"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )

@@ -1,13 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Id$
 
 # Espeak does not run on bsd
 espeak
 
 # Someone who knows kerberos is needed to make sure that this works
 kerberos
-krb4
 
 # fftw requires sinl and cosl function, not present in FreeBSD
 fftw

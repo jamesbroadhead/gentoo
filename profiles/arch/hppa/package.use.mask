@@ -1,8 +1,28 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.
+
+# Jeroen Roovers <jer@gentoo.org> (26 Feb 2017)
+# app-crypt/libsecret is not keyworded for HPPA
+dev-vcs/git libsecret
+
+# Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
+# media-libs/libilbc has not been ported to HPPA
+# media-libs/zimg triggers a toolchain issue (bug #597152)
+media-video/ffmpeg libilbc zimg
+
+# Jeroen Roovers <jer@gentoo.org> (3 Feb 2017)
+# net-mail/notmuch is not keyworded
+mail-client/mutt notmuch
+
+# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
+# unkeyworded rev deps
+dev-games/openscenegraph gdal las
+
+# Jeroen Roovers <jer@gentoo.org> (28 Dec 2016)
+# "#error Unsupported architecture"
+dev-libs/libpcre2 jit
 
 # Jeroen Roovers <jer@gentoo.org> (31 May 2016)
 # Mask kde-frameworks/kapidox (bug #568972)
@@ -33,7 +53,7 @@ net-analyzer/rrdtool rados
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # Contact us if you want or have an HPPA cluster with dev-db/mariadb
 # (bug #544378)
-dev-db/mariadb garbd
+dev-db/mariadb galera
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
@@ -50,10 +70,6 @@ dev-python/pyzor gevent
 # dev-python/greenlet which has not been ported to HPPA (bug #525246)
 dev-python/wsgiproxy2 test
 
-# Jeroen Roovers <jer@gentoo.org> (13 Aug 2014)
-# Needs dev-libs/protobuf{-c} which has not been ported to HPPA (bug #519772)
-net-libs/libgadu gg11
-
 # Jeroen Roovers <jer@gentoo.org> (29 Jul 2014)
 # Test phase requires dev-db/mongodb which requires dev-util/google-perftools
 # which has not been ported to HPPA (bug #517880, bug #525246)
@@ -62,8 +78,7 @@ dev-python/pymongo test
 
 # Jeroen Roovers <jer@gentoo.org> (6 Mar 2014)
 # USE=gui requires x11-libs/qscintilla,
-# USE=jit requires sys-devel/llvm (bug #503594)
-sci-mathematics/octave gui jit
+sci-mathematics/octave gui
 
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2014)
 # Mask x11-libs/libgksu dependency (bug #499900)
@@ -177,14 +192,8 @@ media-video/mplayer cpudetection
 # app-text/xindy needs dev-lisp/clisp and clisp does not build (bug #229217)
 app-text/texlive xindy
 
-# Tobias Scherbaum <dertobi123@gentoo.org> (31 May 2008)
-# Mask ups for nagios-plugins which would pull in sys-power/nut
-net-analyzer/nagios-plugins ups
-
 # Mart Raudsepp <leio@gentoo.org> (02 Apr 2008)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb
 
-# Jeroen Roovers <jer@gentoo.org> (12 Apr 2007)
-# Mask until fixed.
-net-misc/tightvnc server
+# DON'T TOUCH THIS FILE. Instead, file a keyword request bug and CC <hppa@gentoo.org>.

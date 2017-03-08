@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -17,6 +16,9 @@ IUSE=""
 
 src_configure() {
 	tc-ld-disable-gold #369291
+	# Their configure script tries to do funky things with default
+	# compiler selection.  Force our own defaults instead.
+	tc-export CC
 	default
 }
 

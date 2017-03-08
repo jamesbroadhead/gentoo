@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,20 +11,18 @@ SRC_URI="mirror://sourceforge/hdparm/${P}.tar.gz"
 
 LICENSE="BSD GPL-2" # GPL-2 only
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="static"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9.48-sysmacros.patch #580052
+	epatch "${FILESDIR}"/${PN}-9.50-build.patch
 	use static && append-ldflags -static
-	sed -i \
-		-e "/^CFLAGS/ s:-O2:${CFLAGS}:" \
-		-e "/^LDFLAGS/ s:-s:${LDFLAGS}:" \
-		Makefile || die "sed"
 }
 
-src_compile() {
-	emake STRIP=: CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
+	export STRIP=:
 }
 
 src_install() {

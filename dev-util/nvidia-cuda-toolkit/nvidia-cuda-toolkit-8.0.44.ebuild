@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -19,7 +18,7 @@ IUSE="debugger doc eclipse profiler"
 DEPEND=""
 RDEPEND="${DEPEND}
 	>=sys-devel/gcc-4.7[cxx]
-	>=x11-drivers/nvidia-drivers-367.44[uvm]
+	>=x11-drivers/nvidia-drivers-367.44[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses[tinfo]

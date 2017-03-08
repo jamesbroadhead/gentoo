@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 EAPI="5"
 
 inherit eutils
@@ -14,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${PN}-${PVR}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
 fi
 
 HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"

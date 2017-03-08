@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Language learning application that helps improving pronunciation skills"
 HOMEPAGE="https://edu.kde.org/applications/language/artikulate"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gstreamer qtmedia"
 
 DEPEND="

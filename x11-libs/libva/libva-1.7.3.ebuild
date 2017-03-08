@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -15,7 +14,7 @@ AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib ${SCM} multilib
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/vaapi"
+HOMEPAGE="https://01.org/linuxmedia/vaapi"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 	S="${WORKDIR}/${PN}"
@@ -26,13 +25,13 @@ fi
 LICENSE="MIT"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 else
 	KEYWORDS=""
 fi
 IUSE="+drm egl opengl vdpau wayland X"
 
-VIDEO_CARDS="dummy nvidia intel fglrx nouveau"
+VIDEO_CARDS="dummy nvidia intel i965 fglrx nouveau"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -57,6 +56,7 @@ PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB
 			>=x11-libs/xvba-video-0.8.0-r1[${MULTILIB_USEDEP}] )
 		)
 	video_cards_intel? ( >=x11-libs/libva-intel-driver-1.2.2-r1[${MULTILIB_USEDEP}] )
+	video_cards_i965? ( >=x11-libs/libva-intel-driver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	"
 
 REQUIRED_USE="|| ( drm wayland X )

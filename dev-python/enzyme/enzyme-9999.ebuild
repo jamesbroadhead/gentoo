@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,7 +10,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python video metadata parser"
 HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.python.org/pypi/enzyme"
-EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
+EGIT_REPO_URI=( {https,git}://github.com/Diaoul/${PN}.git )
 SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
 
 LICENSE="Apache-2.0"
@@ -35,9 +34,9 @@ src_unpack() {
 
 python_prepare_all() {
 	if use test; then
-		mkdir enzyme/tests/test_{parsers,mkv} || die
-		ln -s "${WORKDIR}"/test* enzyme/tests/test_parsers/ || die
-		ln -s "${WORKDIR}"/test* enzyme/tests/test_mkv/ || die
+		mkdir enzyme/tests/test_{mkv,parsers} || die
+		ln -s "${WORKDIR}"/test*.mkv enzyme/tests/test_mkv/ || die
+		ln -s "${WORKDIR}"/test*.mkv enzyme/tests/test_parsers/ || die
 	fi
 
 	distutils-r1_python_prepare_all

@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
-PATCH_VER=1
+PATCH_VER=2
 CROSS_VER=1.1.1
 
 PERL_OLDVERSEN="5.24.0"
@@ -30,7 +29,7 @@ HOMEPAGE="http://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SHORT_PV}"
-KEYWORDS="~alpha ~amd64 ~amd64-fbsd ~amd64-linux ~arm ~arm64 ~hppa ~hppa-hpux ~ia64 ~ia64-hpux ~ia64-linux ~m68k ~m68k-mint ~mips ~ppc ~ppc64 ~ppc-aix ~ppc-macos ~s390 ~sh ~sparc ~sparc64-solaris ~sparc-solaris ~x64-freebsd ~x64-macos ~x64-solaris ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="berkdb debug doc gdbm ithreads"
 
 RDEPEND="
@@ -337,7 +336,9 @@ src_configure() {
 	mydb='U'
 	if use gdbm ; then
 		mygdbm='D'
-		myndbm='D'
+		if use berkdb ; then
+			myndbm='D'
+		fi
 	fi
 	if use berkdb ; then
 		mydb='D'

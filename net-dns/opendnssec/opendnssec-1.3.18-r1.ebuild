@@ -1,12 +1,11 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 MY_P="${P/_}"
 PKCS11_IUSE="+softhsm opensc external-hsm"
-inherit base autotools multilib user
+inherit autotools multilib user
 
 DESCRIPTION="An open-source turn-key solution for DNSSEC"
 HOMEPAGE="http://www.opendnssec.org/"
@@ -28,7 +27,7 @@ RDEPEND="
 		dev-perl/DBD-mysql
 	)
 	opensc? ( dev-libs/opensc )
-	softhsm? ( dev-libs/softhsm )
+	softhsm? ( dev-libs/softhsm:* )
 	sqlite? (
 		dev-db/sqlite:3
 		dev-perl/DBD-SQLite

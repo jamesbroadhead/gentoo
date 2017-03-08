@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,7 +8,7 @@ KDE_SELINUX_MODULE="games"
 inherit kde5
 
 DESCRIPTION="A game almost the same as ksame, but a bit different by KDE"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

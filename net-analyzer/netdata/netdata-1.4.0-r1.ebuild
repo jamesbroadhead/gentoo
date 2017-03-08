@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
@@ -60,6 +59,10 @@ DEPEND="${RDEPEND}
 
 FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-sysmacros.patch
 )
 
 pkg_setup() {

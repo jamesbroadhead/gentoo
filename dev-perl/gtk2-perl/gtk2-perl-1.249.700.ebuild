@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -25,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.300.0
-	>=dev-perl/extutils-pkgconfig-1.30.0
+	>=dev-perl/ExtUtils-PkgConfig-1.30.0
 "
 
 src_test(){

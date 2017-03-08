@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils games
@@ -17,7 +16,17 @@ RESTRICT="test" # needs a graphics set in order to test
 
 RDEPEND="!dedicated? (
 		media-libs/libsdl[sound,X,video]
-		icu? ( dev-libs/icu:= )
+		icu? (
+			|| (
+				(
+					dev-libs/icu-layoutex
+					dev-libs/icu-le-hb
+					>=dev-libs/icu-58.1
+				)
+				<dev-libs/icu-58.1
+			)
+			dev-libs/icu:=
+		)
 		truetype? (
 			media-libs/fontconfig
 			media-libs/freetype:2

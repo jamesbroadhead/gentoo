@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools libtool git-r3 linux-info pam
@@ -81,7 +80,7 @@ src_configure() {
 		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-pam-module-dir="$(getpam_mod_dir)" \
-		--with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
+		--with-xinitrc-dir="${EPREFIX}"/etc/X11/xinit/xinitrc.d \
 		--without-systemdsystemunitdir
 }
 

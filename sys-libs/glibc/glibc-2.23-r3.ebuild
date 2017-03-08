@@ -1,16 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="4"
 
-inherit eutils versionator toolchain-funcs flag-o-matic gnuconfig multilib systemd unpacker multiprocessing
+inherit eutils versionator toolchain-funcs flag-o-matic gnuconfig multilib systemd unpacker multiprocessing prefix
 
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 RESTRICT="strip" # strip ourself #46186
 EMULTILIB_PKG="true"
 
@@ -27,7 +26,7 @@ case ${PV} in
 	;;
 esac
 GCC_BOOTSTRAP_VER="4.7.3-r1"
-PATCH_VER="6"                                  # Gentoo patchset
+PATCH_VER="7"                                  # Gentoo patchset
 : ${NPTL_KERN_VER:="2.6.32"}                   # min kernel version nptl requires
 
 IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only"

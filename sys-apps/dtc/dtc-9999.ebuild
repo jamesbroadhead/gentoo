@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit multilib toolchain-funcs eutils
@@ -14,7 +13,7 @@ else
 fi
 
 DESCRIPTION="Open Firmware device tree compiler"
-HOMEPAGE="http://devicetree.org/Device_Tree_Compiler"
+HOMEPAGE="https://devicetree.org/ https://git.kernel.org/cgit/utils/dtc/dtc.git/"
 
 LICENSE="GPL-2"
 SLOT="0"

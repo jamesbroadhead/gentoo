@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -39,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-invoke-prev-filter.patch"	# bug 494448
 	"${FILESDIR}/${PN}-media-keys.patch"		# bug 495984
 	"${FILESDIR}/${PN}-xrandr-missing-lib.patch"
+	"${FILESDIR}/${PN}-gcc6-fix.patch"
 )
 
 src_prepare() {

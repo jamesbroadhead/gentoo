@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -106,7 +105,7 @@ src_prepare() {
 
 		epatch "${FILESDIR}"/3.4.2/clang/gentoo-install.patch
 		epatch "${FILESDIR}"/3.4.2/clang/darwin_build_fix.patch
-		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 

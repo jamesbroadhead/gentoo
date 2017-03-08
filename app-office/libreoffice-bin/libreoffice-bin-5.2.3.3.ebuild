@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -64,13 +63,13 @@ BIN_COMMON_DEPEND="
 	dev-libs/boost:0/1.56.0
 	dev-libs/icu:0/58.1
 	>=media-gfx/graphite2-1.2.0
-	media-libs/glew:0/1.10
+	|| ( media-libs/glew:0/1.10 media-libs/glew:1.10 )
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
 	>=sys-devel/gcc-4.9.3
 	>=sys-libs/glibc-2.22
 	virtual/jpeg:62
-	kde? ( >=kde-base/kdelibs-4.14.24:4 >=dev-qt/qtcore-4.8.6-r2:4 >=dev-qt/qtgui-4.8.6-r4:4 )
+	kde? ( >=kde-frameworks/kdelibs-4.14.24:4 >=dev-qt/qtcore-4.8.6-r2:4 >=dev-qt/qtgui-4.8.6-r4:4 )
 "
 
 # PLEASE place any restrictions that are specific to the binary builds

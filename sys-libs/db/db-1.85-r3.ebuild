@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 inherit eutils toolchain-funcs multilib multilib
 
@@ -36,7 +35,7 @@ src_compile() {
 }
 
 src_install() {
-	make -C PORT/linux install DESTDIR="${D}" || die
+	make -C PORT/linux install DESTDIR="${ED}" || die
 
 	# binary compat symlink
 	dosym libdb1.so.2 /usr/$(get_libdir)/libdb.so.2 || die

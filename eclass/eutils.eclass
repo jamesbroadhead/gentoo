@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
@@ -881,8 +880,6 @@ _eutils_eprefix_init() {
 
 # @FUNCTION: validate_desktop_entries
 # @USAGE: [directories]
-# @MAINTAINER:
-# Carsten Lohrke <carlo@gentoo.org>
 # @DESCRIPTION:
 # Validate desktop entries using desktop-file-utils
 validate_desktop_entries() {
@@ -1062,7 +1059,7 @@ _iconins() {
 #    !!! must specify to install into /usr/share/icons/... !!!
 #    size of the icon, like 48 or 48x48
 #    supported icon sizes are:
-#    16 22 24 32 36 48 64 72 96 128 192 256 scalable
+#    16 22 24 32 36 48 64 72 96 128 192 256 512 scalable
 #  -c, --context
 #    defaults to "apps"
 #  -t, --theme
@@ -1620,8 +1617,6 @@ optfeature() {
 	fi
 }
 
-fi
-
 check_license() {
 	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
 }
@@ -1845,3 +1840,5 @@ in_iuse() {
 
 ;;
 esac
+
+fi

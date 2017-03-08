@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -41,9 +40,6 @@ DEPEND="${RDEPEND}
 AUTOTOOLS_AUTORECONF="1"
 AUTOTOOLS_IN_SOURCE_BUILD="1"
 DOCS=( AUTHORS ChangeLog NEWS README TODO mcabberrc.example doc/README_PGP.txt )
-PATCHES=(
-	"${FILESDIR}/${PN}-0.10.3-vim-ftdetect.patch"
-)
 
 pkg_setup() {
 	if use aspell && use spell; then

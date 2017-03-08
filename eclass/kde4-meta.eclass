@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 #
 # @ECLASS: kde4-meta.eclass
 # @MAINTAINER:
@@ -476,7 +475,7 @@ kde4-meta_change_cmakelists() {
 	case ${KMNAME} in
 		kde-workspace)
 			# COLLISION PROTECT section
-			# Install the startkde script just once, as a part of kde-base/kdebase-startkde,
+			# Install the startkde script just once, as a part of kde-plasma/kdebase-startkde,
 			# not as a part of every package.
 			if [[ ${PN} != kdebase-startkde && -f CMakeLists.txt ]]; then
 				# The startkde script moved to kdebase-workspace for KDE4 versions > 3.93.0.
