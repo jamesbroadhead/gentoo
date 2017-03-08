@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: savedconfig.eclass
@@ -47,7 +47,7 @@ save_config() {
 	[[ $# -eq 0 ]] && die "Usage: save_config <files>"
 
 	# Be lazy in our EAPI compat
-	: ${ED:=${D}}
+	: "${ED:=${D}}"
 
 	local dest="/etc/portage/savedconfig/${CATEGORY}"
 	if [[ $# -eq 1 && -f $1 ]] ; then
@@ -144,7 +144,7 @@ savedconfig_pkg_postinst() {
 
 	if use savedconfig ; then
 		# Be lazy in our EAPI compat
-		: ${EROOT:=${ROOT}}
+		: "${EROOT:=${ROOT}}"
 
 		find "${EROOT}/etc/portage/savedconfig/${CATEGORY}/${PF}" \
 			-exec touch {} + 2>/dev/null
